@@ -8,9 +8,7 @@ function start(){
 
 function loop(){
     resizeCanvas();
-    for(var p in player){
-        player[p].draw();
-    }
+    player.draw();
     clearTimeout(temp);
     temp = setTimeout(loop,33);
 }

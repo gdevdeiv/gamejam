@@ -1,23 +1,24 @@
 cPlayer = function(color){
-    this.posX = Math.random ()*500;
-    this.posY = Math.random ()*500;
+
 
     this.width = 10;
     this.height = 10;
 
-    this.speedY = 0;
-    this.speedX = 0;
+    this.col = 0;
+    this.row = 0;
+
+    this.tileWidth = 100;
+    this.posX = this.col*this.tileWidth;
+    this.posY = this.row*this.tileWidth;
 
     this.hp = 100;
     this.color = color;
 
     this.draw = function(){
+        if(this.posX<this.col*this.tileWidth){}
         ctx.fillStyle = this.color;
         ctx.fillRect(this.posX,this.posY,this.width,this.height);
     }
 }
 
-var player = [];
-for(var i = 0;i<100;i++){
-    player[i] = new cPlayer("red");
-}
+var player = new cPlayer("red");
