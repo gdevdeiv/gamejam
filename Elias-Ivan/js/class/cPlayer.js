@@ -27,6 +27,7 @@ function cPlayer(){
         }
 
         // POS Y
+        
         if(this.posY != this.row*this.tileWidth){
             if(this.posY<this.row*this.tileWidth){
                 this.posY++;

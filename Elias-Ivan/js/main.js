@@ -7,8 +7,9 @@ function start(){
 }
 
 function loop(){
-    functionsIvan()
-    player.draw();
+
+    functionsIvan();
+
     clearTimeout(temp);
     temp = setTimeout(loop,fps);
 }
