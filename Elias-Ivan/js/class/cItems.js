@@ -17,6 +17,6 @@ cItem = function(id){
 
 var item = [];
 for(var i = 0;i<100;i++){
-    item[i] = new cItem(Math.round(Math.ramdom()*100))
+    item[i] = new cItem(Math.round(Math.random()*100))
     console.log("este es el item: "+this.id)
 }
