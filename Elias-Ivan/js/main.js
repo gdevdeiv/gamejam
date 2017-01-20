@@ -7,7 +7,7 @@ function start(){
 }
 
 function loop(){
-    resizeCanvas();
+    functionsIvan()
     player.draw();
     clearTimeout(temp);
     temp = setTimeout(loop,fps);
