@@ -1,3 +1,5 @@
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 $(document).ready(function(){
     temp = setTimeout(loop, 0);
 });
