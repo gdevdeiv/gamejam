@@ -9,7 +9,7 @@ function start(){
 function loop(){
 
     functionsIvan();
-
+    for(var i in item){item[i].draw()}
     clearTimeout(temp);
     temp = setTimeout(loop,fps);
 }
