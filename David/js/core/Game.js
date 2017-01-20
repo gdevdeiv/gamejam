@@ -8,8 +8,7 @@ function Game(config) {
 
 	this.inGame = false;
 	this.menus = {
-		start: new MenuStart(),
-		main: new MenuMain()
+		start: new MenuStart()
 	};
 	
 	this.init = function() {
