@@ -21,7 +21,7 @@ function cPlayer(){
             }else if(this.posX>this.col*this.tileWidth){
                 this.posX--;
             }
-            this.moveX = false;
+ 
         
 
         // POS Y
@@ -31,7 +31,7 @@ function cPlayer(){
             }else if(this.posY>this.row*this.tileWidth){
                 this.posY--;
             }
-            this.moveY = false;
+
        
 
         ctx.fillStyle = this.color;
