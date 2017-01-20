@@ -10,5 +10,5 @@ function loop(){
     resizeCanvas();
     player.draw();
     clearTimeout(temp);
-    temp = setTimeout(loop,33);
+    temp = setTimeout(loop,fps);
 }

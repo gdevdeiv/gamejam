@@ -13,7 +13,14 @@ cPlayer = function(color){
     this.color = color;
 
     this.draw = function(){
-        if(this.posX<this.col*this.tileWidth){this.posX++}
+        if(this.posX<this.col*this.tileWidth){
+            this.posX++;
+        }else if(this.posX>this.col*this.tileWidth){this.posX--;}
+        if(this.posX<this.col*this.tileWidth){
+            this.posX++;
+        }else if(this.posX>this.col*this.tileWidth){
+            this.posX--;
+        }
         ctx.fillStyle = this.color;
         ctx.fillRect(this.posX,this.posY,this.width,this.height);
     }
