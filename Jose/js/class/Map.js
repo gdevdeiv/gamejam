@@ -44,5 +44,7 @@ Map.prototype.tick = function(){
 };
 
 Map.prototype.render = function() {
-    ctx.drawImage(this.img, this.x, this.y);
+    for (var tile in this.tiles) {
+        ctx.drawImage(tiles[tile].img, tiles[tile].x, tiles[tile].y);
+    }
 }
