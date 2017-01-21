@@ -45,7 +45,7 @@ function Player() {
 	this.init = function () {
 		this.tileWidth = game.map.gapProySize;
 		this.posX = (this.col * this.tileWidth/2) + (this.tileWidth / 2 - this.width / 2);
-		this.posY = (this.row * this.tileWidth) + (this.tileWidth / 2 - this.width / 2);
+		this.posY = (this.row * this.tileWidth/2) + (this.tileWidth / 2 - this.width / 2);
 	}.bind(this);
 
 	this.tick = function() {
@@ -90,11 +90,17 @@ function Player() {
 		}
 
 		// POS Y
-		if (this.posY != this.row * this.tileWidth + (this.tileWidth / 2 - this.height / 2)) {
-			if (this.posY < this.row * this.tileWidth + (this.tileWidth / 2 - this.height / 2)) {
+		if (this.posY != this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2)) {
+			if (this.posY < this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2)) {
 				this.posY++;
-			} else if (this.posY > this.row * this.tileWidth + (this.tileWidth / 2 - this.height / 2)) {
+				if(Math.abs(this.posY - (this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2))) < 1) {
+					this.posY = this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2);
+				}
+			} else if (this.posY > this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2)) {
 				this.posY--;
+				if(Math.abs(this.posY - (this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2))) < 1) {
+					this.posY = this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2);
+				}
 			}
 			this.moveY = false;
 		} else {
