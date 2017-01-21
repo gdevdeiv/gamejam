@@ -26,6 +26,7 @@ function Map(level) {
 			if (data[i] == 1 && data[i + 1] == 2 && data[i + 2] == 3) { 
 				var tempType = "house"; 
 				game.warehouse = new Warehouse(tempX, tempY);
+				console.log("house");
 			}
 			else if (data[i] < 10 && data[i + 1] < 10 && data[i + 2] < 10) { var tempType = "black"; }
 			else if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] > 240) { var tempType = "white"; }
