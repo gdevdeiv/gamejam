@@ -23,6 +23,7 @@ function Game(config) {
 		magenta: new Sprite("img/tiles/magenta.png")
 	};
 	this.map = new Map(new Sprite("level/level1.png"));
+	this.player = new Player();
 	
 	this.init = function() {
 		this.clock = setTimeout(this.loop, 1000 / this.fps);
@@ -34,6 +35,7 @@ function Game(config) {
 
 		if (this.inGame) {
 			this.map.tick();
+			this.player.tick();
 		}
 
 		clearTimeout(this.clock);
