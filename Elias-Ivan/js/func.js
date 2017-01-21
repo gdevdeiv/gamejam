@@ -1,8 +1,7 @@
 function functionsIvan(){
     resizeCanvasIvan();
     playerControlIvan();
-    // PLAYER DRAW
-    player.draw(); 
+    player.draw();
 }
 
 function resizeCanvasIvan(){
