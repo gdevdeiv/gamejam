@@ -4,7 +4,7 @@ function Map(level) {
 	this.height = null;
 	this.gapSize = 82;
 	this.gapProySize = this.gapSize * 0.8943885546;
-	this.gapX = -Math.floor(this.width / 2 - 1) * this.gapSize * 7;
+	this.gapX = 0//-Math.floor(this.width / 2 - 1) * this.gapSize * 7;
 	this.gapY = 0;
 	this.items = [];
 

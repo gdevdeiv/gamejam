@@ -26,6 +26,7 @@ function Game(config) {
 	this.player = new Player();
 	
 	this.init = function() {
+		this.player.init();
 		this.clock = setTimeout(this.loop, 1000 / this.fps);
 	}.bind(this);
 

@@ -2,7 +2,7 @@ function Player() {
 	this.width = 35;
 	this.height = this.width;
 
-	this.tileWidth = 50;
+	this.tileWidth = null;
 
 	this.col = 0;
 	this.row = 0;
@@ -34,6 +34,10 @@ function Player() {
 		if (event.which == 38) { that.dirY = null; }
 		if (event.which == 40) { that.dirY = null; }
 	});
+
+	this.init = function () {
+		this.tileWidth = game.map.gapSize;
+	}.bind(this);
 
 	this.tick = function() {
 		this.update();
