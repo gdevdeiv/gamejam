@@ -65,7 +65,7 @@ function Map(level) {
 		var xd = Math.random()*100;
 		for (var i = 0; i < xd; i++) {
 			console.log("xd");
-			this.items.push(new Item(Math.ceil(Math.random() * 10), tileWidth));
+			this.items.push(new Item(Math.ceil(Math.random() * 11), tileWidth));
 		}
 	}.bind(this);
 };
