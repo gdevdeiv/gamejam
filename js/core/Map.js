@@ -25,7 +25,6 @@ function Map(level) {
 			var tempY = Math.floor((i / 4) / this.width);
 			if (data[i] == 1 && data[i + 1] == 2 && data[i + 2] == 3) { 
 				var tempType = "house"; 
-				
 				console.log("house");
 			}
 			else if (data[i] < 10 && data[i + 1] < 10 && data[i + 2] < 10) { var tempType = "black"; }
@@ -73,8 +72,6 @@ function Map(level) {
 			var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
 			game.context.drawImage(this.tiles[tile].frozen ? game.tiles.white.img : this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
 		}
-		var iso = Util.cartesianToIso(1, 1);
-		game.context.drawImage(game.tiles.house.img, iso.x + this.gapX, iso.y + this.gapY);
 	}.bind(this);
 
 	this.spawnItems = function (tileWidth) {

@@ -124,6 +124,14 @@ function Player() {
 		if(this.sprite > this.maxSprites) {
 			this.sprite = 0;
 		}
+		for (var tile in game.map.tiles) {
+			if (game.map.tiles[tile].frozen && game.map.tiles[tile].x == this.posX && game.map.tiles[tile].y == this.posY) {
+				console.log("Tset")
+				this.health--;
+				Hud.dead();
+				break;
+			}
+		}
 	}.bind(this);
 
 	this.render = function () {
