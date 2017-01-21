@@ -4,6 +4,7 @@ function Game(config) {
 	this.context = this.canvas.getContext("2d");
 
 	this.clock = null;
+	this.ticks = 0;
 	this.fps = config.fps;
 
 	this.inGame = false;
@@ -38,6 +39,7 @@ function Game(config) {
 			this.player.tick();
 		}
 
+		this.ticks++;
 		clearTimeout(this.clock);
 		this.clock = setTimeout(this.loop, 1000 / this.fps);
 	}.bind(this);
