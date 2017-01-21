@@ -1,7 +1,8 @@
 var Round = function(round, game) {
     this.round = round;
     this.remaining = null;
-    this.roundTime = 90 * 1000;
+    this.duration = 5;
+    this.roundTime = this.duration * 1000;
     this.roundTime += Date.now();
     console.log(this.roundTime)
 
@@ -21,9 +22,11 @@ Round.prototype.tick = function() {
 
     console.log(this.minute+","+this.seconds)
     
-    if(this.roundTime === 0) {
+    if(this.minute === 0 && this.seconds < 1) {
         console.log("fin round")
         this.round++;
-        this.roundTime = 3 * game.fps;
+        this.roundTime = this.duration * 1000;
+        this.roundTime += Date.now();
+        this.remaining = Math.ceil((this.roundTime - Date.now()) / 1000);
     }
 }

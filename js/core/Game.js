@@ -2,7 +2,8 @@ function Game(config) {
 	this.name = config.name;
 	this.canvas = config.canvas;
 	this.context = this.canvas.getContext("2d");
-
+	this.startTime = null;
+	this.endTime = null;
 	this.clock = null;
 	this.ticks = 0;
 	this.fps = config.fps;
@@ -33,6 +34,7 @@ function Game(config) {
 	}.bind(this);
 
 	this.loop = function() {
+		this.startTime = Date.now();
 		this.canvas.width = window.innerWidth;
 		this.canvas.height = window.innerHeight;
 
@@ -44,6 +46,8 @@ function Game(config) {
 
 		this.ticks++;
 		clearTimeout(this.clock);
-		this.clock = setTimeout(this.loop, 1000 / this.fps);
+		this.endTime = Date.now();
+
+		this.clock = setTimeout(this.loop, 1000 / this.fps - (this.endTime- this.startTime));
 	}.bind(this);
 }

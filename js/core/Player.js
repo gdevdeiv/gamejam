@@ -43,7 +43,7 @@ function Player() {
 		if (event.which == 49) {
 			var soltar = true;
 			for(var i in game.map.items){		
-				if(that.col+1 == game.map.items[i].col && that.row == game.map.items[i].row && that.inventario.length > 0){
+				if(that.col+1 == game.map.items[i].col+1 && that.row == game.map.items[i].row && that.inventario.length > 0){
 					var aux = that.inventario[0];
 					that.inventario[0] = game.map.items[i].id;
 					game.map.items[i].id = aux;
