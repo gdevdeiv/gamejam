@@ -10,7 +10,7 @@ function Map(level) {
 	this.sweepRow = 0;
 
 	this.init = function() {
-		this.spawnItems();
+		this.spawnItems(this.gapSize);
 		this.width = this.level.width;
 		this.height = this.level.height;
 		game.context.drawImage(this.level, 0, 0);
@@ -39,31 +39,31 @@ function Map(level) {
 		}
 		this.sweepRow++;
 	}.bind(this);
-};
 
-Map.prototype.tick = function () {
-	this.update();
-	this.render();
-	for (var item in this.items) {
-		this.items[item].tick();
-	}
-};
+	this.tick = function () {
+		this.update();
+		this.render();
+		for (var item in this.items) {
+			this.items[item].tick();
+		}
+	}.bind(this);
 
-Map.prototype.render = function () {
-	for (var tile in this.tiles) {
-		var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
-		game.context.drawImage(this.tiles[tile].frozen ? game.tiles.white.img : this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
-	}
-};
+	this.update = function () {
+		if (game.ticks % 10 === 0) {
+			this.sweep();
+		}
+	}.bind(this);
 
-Map.prototype.update = function () {
-	if (game.ticks % 10 === 0) {
-		this.sweep();
-	}
-};
+	this.render = function () {
+		for (var tile in this.tiles) {
+			var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
+			game.context.drawImage(this.tiles[tile].frozen ? game.tiles.white.img : this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
+		}
+	}.bind(this);
 
-Map.prototype.spawnItems = function () {
-	for (var i = 0; i < Math.floor(Math.random() * 5000); i++) {
-		this.items.push(new Item(Math.ceil(Math.random() * 10)));
-	}
+	this.spawnItems = function (tileWidth) {
+		for (var i = 0; i < Math.floor(Math.random() * 5000); i++) {
+			this.items.push(new Item(Math.ceil(Math.random() * 10), tileWidth));
+		}
+	}.bind(this);
 };
