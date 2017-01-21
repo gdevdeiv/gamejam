@@ -10,6 +10,19 @@ function Game(config) {
 	this.menus = {
 		start: new MenuStart()
 	};
+
+	this.tiles = {
+		black: new Sprite("img/tiles/black.png"),
+		white: new Sprite("img/tiles/white.png"),
+		red: new Sprite("img/tiles/red.png"),
+		green: new Sprite("img/tiles/green.png"),
+		brown: new Sprite("img/tiles/brown.png"),
+		blue: new Sprite("img/tiles/blue.png"),
+		yellow: new Sprite("img/tiles/yellow.png"),
+		cyan: new Sprite("img/tiles/cyan.png"),
+		magenta: new Sprite("img/tiles/magenta.png")
+	};
+	this.map = new Map(new Sprite("level/level1.png"));
 	
 	this.init = function() {
 		this.clock = setTimeout(this.loop, 1000 / this.fps);
@@ -20,8 +33,7 @@ function Game(config) {
 		this.canvas.height = window.innerHeight;
 
 		if (this.inGame) {
-			this.context.fillStyle = "rgb(255, 0, 0)";
-			this.context.fillRect(10, 10, 10, 10);
+			this.map.tick();
 		}
 
 		clearTimeout(this.clock);
