@@ -16,6 +16,7 @@ function Pistas(){
     this.txt[2] = "Te sientes hambriento.";
 
     this.txt[] = "Parece que están llegando nuves..."; 
+    this.txt[] = "Parece que están llegando nuves oscuras."; 
 
 
     this.txt[] = "Bajarán las temperaturas drásticamente."; 
@@ -42,16 +43,8 @@ function Pistas(){
             eventNum[1] = Math.floor(Math.random()*this.txt.length-1);
         }while(eventNum[0] == eventNum[1]);
         
-        Hud.announceRound();
-    }
-
-    this.exe = function(){
-        var suerte = false;
-        if(eventNum[0] == 0 || eventNum[1] == 0){
-
-        }else{
-
-        }
+        console.log(eventNum[0]+"/-/"+eventNum[1]);
+        Hud.announceRound(eventNum[0],eventNum[1]);
     }
 }
 
