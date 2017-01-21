@@ -61,7 +61,7 @@ function Map(level) {
 	}.bind(this);
 
 	this.update = function () {
-		if (game.ticks % 30 === 0 && this.sweeping) {
+		if (game.ticks % 15 === 0 && this.sweeping) {
 			this.sweep();
 		}
 	}.bind(this);

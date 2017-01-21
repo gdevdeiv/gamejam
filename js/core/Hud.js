@@ -1,10 +1,9 @@
-function Hud() {
-	
-	this.announceRound = function(round) {
-		$(".hud .round").text("Round " + round);
-	}.bind(this);
+function Hud() {}
 
-	this.remainingTime = function(time) {
-		$(".hud .time").text(time);
-	}.bind(this);
+Hud.announceRound = function(round) {
+	$(".hud .round").text("Round " + round);
+};
+
+Hud.remainingTime = function(minute, seconds) {
+	$(".hud .time").text(minute + ":" + ("0" + seconds).slice(-2));
 }

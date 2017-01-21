@@ -33,6 +33,12 @@ html, body {
 .hud .hero {
 	background: transparent;
 }
+.hud .time {
+	font-size: 72px;
+	text-align: right;
+	color: white;
+	font-weight: bold;
+}
 
 /**
  * BUTTONS
