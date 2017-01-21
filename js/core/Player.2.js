@@ -43,8 +43,8 @@ function Player() {
 	});
 
 	this.init = function () {
-		this.tileWidth = game.map.gapProySize;
-		this.posX = (this.col * this.tileWidth/2) + (this.tileWidth / 2 - this.width / 2);
+		this.tileWidth = game.map.gapSize;
+		this.posX = (this.col * this.tileWidth) + (this.tileWidth / 2 - this.width / 2);
 		this.posY = (this.row * this.tileWidth) + (this.tileWidth / 2 - this.width / 2);
 	}.bind(this);
 
@@ -72,17 +72,11 @@ function Player() {
 		}
 
 		// POS X
-		if (this.posX != this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
-			if (this.posX < this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
+		if (this.posX != this.col * this.tileWidth + (this.tileWidth / 2 - this.width / 2)) {
+			if (this.posX < this.col * this.tileWidth + (this.tileWidth / 2 - this.width / 2)) {
 				this.posX++;
-				if(Math.abs(this.posX - (this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2))) < 1){
-					this.posX = this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2);
-				}
-			} else if (this.posX > this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
+			} else if (this.posX > this.col * this.tileWidth + (this.tileWidth / 2 - this.width / 2)) {
 				this.posX--;
-				if(Math.abs(this.posX - (this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2))) < 1){
-					this.posX = this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2);
-				}
 			}
 			this.moveX = false;
 		} else {

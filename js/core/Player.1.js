@@ -1,5 +1,5 @@
 function Player() {
-	this.width = 35;
+	this.width = 15;
 	this.height = this.width;
 
 	this.tileWidth = null;
@@ -7,8 +7,8 @@ function Player() {
 	this.col = 0;
 	this.row = 0;
 
-	this.posX = null;
-	this.posY = null;
+	this.posX = this.col * this.tileWidth + (this.tileWidth / 2 - this.width / 2);
+	this.posY = this.row * this.tileWidth + (this.tileWidth / 2 - this.width / 2);
 
 	this.hp = 100;
 	this.moveX = true;
@@ -27,10 +27,10 @@ function Player() {
 		if (event.which == 40 && that.moveY) { that.dirY = "down"; }
 
 
-		if (event.which == 100) { game.map.gapX+= game.map.gapSize;}
-		if (event.which == 102) { game.map.gapX-= game.map.gapSize; }
-		if (event.which == 104) { game.map.gapY+= game.map.gapSize/2; }
-		if (event.which == 98) { game.map.gapY-= game.map.gapSize/2;}
+		if (event.which == 100) { game.map.gapX += game.map.gapSize; }
+		if (event.which == 102) { game.map.gapX -= game.map.gapSize; }
+		if (event.which == 104) { game.map.gapY += game.map.gapSize / 2; }
+		if (event.which == 98) { game.map.gapY -= game.map.gapSize / 2; }
 
 	});
 
@@ -44,11 +44,12 @@ function Player() {
 
 	this.init = function () {
 		this.tileWidth = game.map.gapProySize;
-		this.posX = (this.col * this.tileWidth/2) + (this.tileWidth / 2 - this.width / 2);
-		this.posY = (this.row * this.tileWidth) + (this.tileWidth / 2 - this.width / 2);
+		this.posX = this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2);
+		this.posY = this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2);
+		console.log(this.posX)
 	}.bind(this);
 
-	this.tick = function() {
+	this.tick = function () {
 		this.update();
 		this.render();
 	}.bind(this);
@@ -72,17 +73,11 @@ function Player() {
 		}
 
 		// POS X
-		if (this.posX != this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
-			if (this.posX < this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
+		if (this.posX != this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2)) {
+			if (this.posX < this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2)) {
 				this.posX++;
-				if(Math.abs(this.posX - (this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2))) < 1){
-					this.posX = this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2);
-				}
-			} else if (this.posX > this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
+			} else if (this.posX > this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2)) {
 				this.posX--;
-				if(Math.abs(this.posX - (this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2))) < 1){
-					this.posX = this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2);
-				}
 			}
 			this.moveX = false;
 		} else {
@@ -90,10 +85,10 @@ function Player() {
 		}
 
 		// POS Y
-		if (this.posY != this.row * this.tileWidth + (this.tileWidth / 2 - this.height / 2)) {
-			if (this.posY < this.row * this.tileWidth + (this.tileWidth / 2 - this.height / 2)) {
+		if (this.posY != this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2)) {
+			if (this.posY < this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2)) {
 				this.posY++;
-			} else if (this.posY > this.row * this.tileWidth + (this.tileWidth / 2 - this.height / 2)) {
+			} else if (this.posY > this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2)) {
 				this.posY--;
 			}
 			this.moveY = false;
@@ -103,6 +98,7 @@ function Player() {
 
 		game.context.fillStyle = "rgba(50,150,200,05)";
 		var iso = Util.cartesianToIso(this.posX, this.posY);
+		console.log(iso.x+","+iso.y)
 		game.context.fillRect(iso.x + game.map.gapX, iso.y + game.map.gapY, this.width, this.height);
 	}.bind(this);
 }
