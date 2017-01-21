@@ -1,13 +1,12 @@
 function cPlayer(){
-    this.width = 10;
-    this.height = 10;
+    this.width = 25;
+    this.height = this.width;
 
     this.col = 0;
     this.row = 0;
 
-    this.tileWidth = 50;
-    this.posX = this.col*this.tileWidth;
-    this.posY = this.row*this.tileWidth;
+    this.posX = this.col*tileWidth;
+    this.posY = this.row*tileWidth;
 
     this.hp = 100;
     this.moveX = true;
@@ -15,10 +14,10 @@ function cPlayer(){
     this.draw = function(){
 
             // POS X
-        if(this.posX != this.col*this.tileWidth){
-            if(this.posX<this.col*this.tileWidth){
+        if(this.posX != this.col*tileWidth){
+            if(this.posX<this.col*tileWidth){
                 this.posX++;
-            }else if(this.posX>this.col*this.tileWidth){
+            }else if(this.posX>this.col*tileWidth){
                 this.posX--;
             }
             this.moveX = false;
@@ -27,10 +26,10 @@ function cPlayer(){
         }
 
         // POS Y
-        if(this.posY != this.row*this.tileWidth){
-            if(this.posY<this.row*this.tileWidth){
+        if(this.posY != this.row*tileWidth){
+            if(this.posY<this.row*tileWidth){
                 this.posY++;
-            }else if(this.posY>this.row*this.tileWidth){
+            }else if(this.posY>this.row*tileWidth){
                 this.posY--;
             }
             this.moveY = false;
@@ -38,7 +37,7 @@ function cPlayer(){
             this.moveY = true;
         }
 
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = "rgba(50,150,200,05)";
         ctx.fillRect(this.posX,this.posY,this.width,this.height);
     }
 }

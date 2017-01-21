@@ -1,9 +1,12 @@
 function cItem(id){
-    this.posX = Math.random ()*600;
-    this.posY = Math.random ()*600;
+    this.col = Math.floor(Math.random()*(Math.floor(windowHeight/tileWidth)));
+    this.row = Math.floor(Math.random()*(Math.floor(windowWidth/tileWidth)));
+    console.log(this.col+"//"+this.row);
+    this.posX = this.col*tileWidth;
+    this.posY =  this.row*tileWidth;
 
-    this.widht = 12;
-    this.height = 12;
+    this.width = 25;
+    this.height = 25;
 
     this.id = id;
     this.color;
@@ -45,12 +48,11 @@ function cItem(id){
     this.draw = function(){
         ctx.fillStyle = this.color;
         ctx.fillRect(this.posX,this.posY,this.width,this.height);
-        
     }
 }
 
 var item = [];
-for(var i = 0;i<10;i++){
-    item[i] = new cItem(i+1);
-    console.log("este es el item: "+item[i].id);
+for(var i = 0;i<Math.floor(Math.random()*5000);i++){
+    item[i] = new cItem(Math.ceil(Math.random()*10));
+  //  console.log("este es el item: "+item[i].id);
 }

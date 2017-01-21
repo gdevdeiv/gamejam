@@ -1,6 +1,6 @@
-function functionsIvan(){
+function functionsIvanElias(){
     resizeCanvasIvan();
-
+    dibujarItems();
     player.draw();
 }
 
@@ -14,7 +14,7 @@ $(document).keydown(function(event){
     if(event.which == 32){
         console.log("payaso");
     }else if(event.which == 37){
-        player.col--;console.log("izq"+player.col);
+        player.col--;
     }else if(event.which == 39){
         player.col++;
     }else if(event.which == 38){
@@ -25,3 +25,8 @@ $(document).keydown(function(event){
 });
 
 
+
+
+function dibujarItems(){
+    for(var r in item){item[r].draw();}
+}
