@@ -44,7 +44,7 @@ function Item(id, tileWidth) {
 			this.color = "brown";
 			break;
 		default:
-			console.log("item no esperado")
+			console.log("item no esperado");
 			break;
 	}
 
