@@ -37,7 +37,7 @@ function cPlayer(){
             this.moveY = true;
         }
 
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = "rgba(50,150,200,05)";
         ctx.fillRect(this.posX,this.posY,this.width,this.height);
     }
 }
