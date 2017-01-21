@@ -4,6 +4,7 @@ function Player() {
 	this.sprite = 0;
 	this.maxSprites = 3;
 	this.direction = "s";
+	this.health = 10;
 
 	this.tileWidth = null;
 
@@ -92,8 +93,11 @@ function Player() {
 
 	this.init = function () {
 		this.tileWidth = game.map.gapProySize;
+		this.col = Math.round(game.map.level.width / 2);
+		this.row = Math.round(game.map.level.width / 2);
 		this.posX = ((this.col+this.renderCorrectX) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 		this.posY = ((this.row+this.renderCorrectY) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
+
 	}.bind(this);
 
 	this.tick = function () {
