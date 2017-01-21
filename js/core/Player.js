@@ -31,7 +31,7 @@ function Player() {
 		if (event.which == 32) {
 			console.log(that.col);
 			for(var i in game.map.items){
-				if(that.col+1 == game.map.items[i].col && that.row == game.map.items[i].row){
+				if(that.col+2 == game.map.items[i].col && that.row == game.map.items[i].row){
 					if(that.inventario.length < 2){
 						that.inventario.push(game.map.items[i].id);
 						game.map.items.splice(i,1);
