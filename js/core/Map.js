@@ -23,7 +23,10 @@ function Map(level) {
 		for (var i = 0; i < data.length; i += 4) {
 			var tempX = (i / 4) % this.width;
 			var tempY = Math.floor((i / 4) / this.width);
-			if (data[i] == 1 && data[i + 1] == 2 && data[i + 2] == 3) { var tempType = "house"; }
+			if (data[i] == 1 && data[i + 1] == 2 && data[i + 2] == 3) { 
+				var tempType = "house"; 
+				game.warehouse = new Warehouse(tempX, tempY);
+			}
 			else if (data[i] < 10 && data[i + 1] < 10 && data[i + 2] < 10) { var tempType = "black"; }
 			else if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] > 240) { var tempType = "white"; }
 			else if (data[i] > 240 && data[i + 1] < 10 && data[i + 2] < 10) { var tempType = "red"; }
