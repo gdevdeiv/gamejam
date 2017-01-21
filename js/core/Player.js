@@ -20,7 +20,14 @@ function Player() {
 	var that = this;
 
 	$(document).keydown(function (event) {
-		if (event.which == 32) { console.log("payaso"); }
+		if (event.which == 32) {
+			console.log(that.col);
+			for(var i in game.map.items){
+				if(that.col == game.map.items[i].col){
+					console.log("xd");
+				}
+			}
+		}
 		if (event.which == 37 && that.moveX) { that.dirX = "left"; }
 		if (event.which == 39 && that.moveX) { that.dirX = "right"; }
 		if (event.which == 38 && that.moveY) { that.dirY = "up"; }

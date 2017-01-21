@@ -66,7 +66,7 @@ function Map(level) {
 	this.spawnItems = function (tileWidth) {
 		var xd = Math.random()*100;
 		for (var i = 0; i < xd; i++) {
-			console.log("xd");
+
 			this.items.push(new Item(Math.ceil(Math.random() * 11), tileWidth));
 		}
 	}.bind(this);
