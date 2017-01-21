@@ -3,4 +3,5 @@ function Tile(type, x, y) {
 	this.x = x;
 	this.y = y;
 	this.img = game.tiles[this.type].img;
+	this.frozen = false;
 }

@@ -7,6 +7,7 @@ function Map(level) {
 	this.gapX = 0//-Math.floor(this.width / 2 - 1) * this.gapSize * 7;
 	this.gapY = 0;
 	this.items = [];
+	this.sweepRow = 0;
 
 	this.init = function() {
 		this.spawnItems();
@@ -22,7 +23,7 @@ function Map(level) {
 			if (data[i] < 10 && data[i + 1] < 10 && data[i + 2] < 10) { var tempType = "black"; }
 			if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] > 240) { var tempType = "white"; }
 			if (data[i] > 240 && data[i + 1] < 10 && data[i + 2] < 10) { var tempType = "red"; }
-			if (data[i] < 10 && data[i + 1] > 255 && data[i + 2] < 10) { var tempType = "green"; }
+			if (data[i] == 10 && data[i + 1] == 255 && data[i + 2] == 10) { var tempType = "green"; }
 			if (data[i] == 130 && data[i + 1] == 80 && data[i + 2] == 0) { var tempType = "brown"; }
 			if (data[i] < 10 && data[i + 1] < 10 && data[i + 2] > 240) { var tempType = "blue"; }
 			if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] < 10) { var tempType = "yellow"; }
@@ -30,6 +31,13 @@ function Map(level) {
 			if (data[i] < 10 && data[i + 1] > 240 && data[i + 2] > 240) { var tempType = "cyan"; }
 			this.tiles.push(new Tile(tempType, tempX, tempY));
 		}
+	}.bind(this);
+
+	this.sweep = function () {
+		for (var tile in this.tiles) {
+			if (this.tiles[tile].x % this.gapSize === this.sweepRow) { this.tiles[tile].frozen = true; }
+		}
+		this.sweepRow++;
 	}.bind(this);
 };
 
@@ -44,11 +52,15 @@ Map.prototype.tick = function () {
 Map.prototype.render = function () {
 	for (var tile in this.tiles) {
 		var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
-		game.context.drawImage(this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
+		game.context.drawImage(this.tiles[tile].frozen ? game.tiles.white.img : this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
 	}
 };
 
-Map.prototype.update = function () {};
+Map.prototype.update = function () {
+	if (game.ticks % 10 === 0) {
+		this.sweep();
+	}
+};
 
 Map.prototype.spawnItems = function () {
 	for (var i = 0; i < Math.floor(Math.random() * 5000); i++) {
