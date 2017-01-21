@@ -1,6 +1,9 @@
 function Player() {
-	this.width = 15;
+	this.width = 82;
 	this.height = this.width;
+	this.sprite = 0;
+	this.maxSprites = 3;
+	this.direction = "s";
 
 	this.tileWidth = null;
 
@@ -99,7 +102,22 @@ function Player() {
 	}.bind(this);
 
 	this.update = function () {
-
+		if(this.dirX == "right" && this.dirY == null) {this.direction = "e"}
+		if(this.dirX == "right" && this.dirY == "down") {this.direction = "se"}
+		if(this.dirX == null && this.dirY == "down") {this.direction = "s"}
+		if(this.dirX == "left" && this.dirY == "down") {this.direction = "sw"}
+		if(this.dirX == "left" && this.dirY == null) {this.direction = "w"}
+		if(this.dirX == "left" && this.dirY == "up") {this.direction = "nw"}
+		if(this.dirX == null && this.dirY == "up") {this.direction = "n"}
+		if(this.dirX == "right" && this.dirY == "up") {this.direction = "ne"}
+		if(this.dirX != null || this.dirY != null) {
+			this.sprite ++;
+		} else {
+			this.sprite = 0;
+		}
+		if(this.sprite > this.maxSprites) {
+			this.sprite = 0;
+		}
 	}.bind(this);
 
 	this.render = function () {
@@ -154,6 +172,40 @@ function Player() {
 
 		game.context.fillStyle = "rgba(50,150,200,05)";
 		var iso = Util.cartesianToIso(this.posX, this.posY);
-		game.context.fillRect(iso.x + game.map.gapX, iso.y + game.map.gapY, this.width, this.height);
+		game.context.drawImage(animationSprites[this.direction+this.sprite],iso.x + game.map.gapX, iso.y + game.map.gapY, this.width, this.height);
 	}.bind(this);
+}
+
+var animationSprites = [];
+for (var i = 0; i < 4; i++) {
+	animationSprites["n"+i] = new Image();
+	animationSprites["n"+i].src = "img/character/n"+i+".png";
+}
+for (var i = 0; i < 4; i++) {
+	animationSprites["ne"+i] = new Image();
+	animationSprites["ne"+i].src = "img/character/ne"+i+".png";
+}
+for (var i = 0; i < 4; i++) {
+	animationSprites["e"+i] = new Image();
+	animationSprites["e"+i].src = "img/character/e"+i+".png";
+}
+for (var i = 0; i < 4; i++) {
+	animationSprites["se"+i] = new Image();
+	animationSprites["se"+i].src = "img/character/se"+i+".png";
+}
+for (var i = 0; i < 4; i++) {
+	animationSprites["s"+i] = new Image();
+	animationSprites["s"+i].src = "img/character/s"+i+".png";
+}
+for (var i = 0; i < 4; i++) {
+	animationSprites["sw"+i] = new Image();
+	animationSprites["sw"+i].src = "img/character/sw"+i+".png";
+}
+for (var i = 0; i < 4; i++) {
+	animationSprites["w"+i] = new Image();
+	animationSprites["w"+i].src = "img/character/w"+i+".png";
+}
+for (var i = 0; i < 4; i++) {
+	animationSprites["nw"+i] = new Image();
+	animationSprites["nw"+i].src = "img/character/nw"+i+".png";
 }
