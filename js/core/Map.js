@@ -7,6 +7,7 @@ function Map(level) {
 	this.gapX = null;
 	this.gapY = null;
 	this.items = [];
+	this.sweeping = false;
 	this.sweepRow = 0;
 
 	this.init = function() {
@@ -38,9 +39,14 @@ function Map(level) {
 
 	this.sweep = function () {
 		for (var tile in this.tiles) {
-			if (this.tiles[tile].x % this.gapSize === this.sweepRow) { this.tiles[tile].frozen = true; }
+			if (this.tiles[tile].x % this.gapSize === this.sweepRow && this.tiles[tile].type != "house") { this.tiles[tile].frozen = true; }
 		}
-		this.sweepRow++;
+		if (this.sweepRow >= this.width) {
+			this.sweeping = false;
+			this.sweepRow = 0;
+		} else {
+			this.sweepRow++;
+		}
 	}.bind(this);
 
 	this.tick = function () {
@@ -52,7 +58,7 @@ function Map(level) {
 	}.bind(this);
 
 	this.update = function () {
-		if (game.ticks % 10 === 0) {
+		if (game.ticks % 30 === 0 && this.sweeping) {
 			this.sweep();
 		}
 	}.bind(this);
@@ -62,6 +68,8 @@ function Map(level) {
 			var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
 			game.context.drawImage(this.tiles[tile].frozen ? game.tiles.white.img : this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
 		}
+		var iso = Util.cartesianToIso(1, 1);
+		game.context.drawImage(game.tiles.house.img, iso.x + this.gapX, iso.y + this.gapY);
 	}.bind(this);
 
 	this.spawnItems = function (tileWidth) {
