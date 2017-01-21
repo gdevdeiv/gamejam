@@ -4,6 +4,7 @@ function Player() {
 	this.sprite = 0;
 	this.maxSprites = 3;
 	this.direction = "s";
+	this.health = 10;
 
 	this.tileWidth = null;
 
@@ -42,7 +43,7 @@ function Player() {
 		if (event.which == 49) {
 			var soltar = true;
 			for(var i in game.map.items){		
-				if(that.col+1 == game.map.items[i].col && that.row == game.map.items[i].row && that.inventario.length > 0){
+				if(that.col+1 == game.map.items[i].col+1 && that.row == game.map.items[i].row && that.inventario.length > 0){
 					var aux = that.inventario[0];
 					that.inventario[0] = game.map.items[i].id;
 					game.map.items[i].id = aux;
@@ -92,8 +93,11 @@ function Player() {
 
 	this.init = function () {
 		this.tileWidth = game.map.gapProySize;
+		this.col = Math.round(game.map.level.width / 2);
+		this.row = Math.round(game.map.level.width / 2);
 		this.posX = ((this.col+this.renderCorrectX) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 		this.posY = ((this.row+this.renderCorrectY) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
+
 	}.bind(this);
 
 	this.tick = function () {
@@ -102,16 +106,18 @@ function Player() {
 	}.bind(this);
 
 	this.update = function () {
-		if(this.dirX == "right" && this.dirY == null) {this.direction = "e"}
-		if(this.dirX == "right" && this.dirY == "down") {this.direction = "se"}
-		if(this.dirX == null && this.dirY == "down") {this.direction = "s"}
-		if(this.dirX == "left" && this.dirY == "down") {this.direction = "sw"}
-		if(this.dirX == "left" && this.dirY == null) {this.direction = "w"}
-		if(this.dirX == "left" && this.dirY == "up") {this.direction = "nw"}
-		if(this.dirX == null && this.dirY == "up") {this.direction = "n"}
-		if(this.dirX == "right" && this.dirY == "up") {this.direction = "ne"}
-		if(this.dirX != null || this.dirY != null) {
-			this.sprite ++;
+		if(this.dirX == "right" && this.dirY == null) {this.direction = "se"}
+		if(this.dirX == "right" && this.dirY == "down") {this.direction = "s"}
+		if(this.dirX == null && this.dirY == "down") {this.direction = "sw"}
+		if(this.dirX == "left" && this.dirY == "down") {this.direction = "w"}
+		if(this.dirX == "left" && this.dirY == null) {this.direction = "nw"}
+		if(this.dirX == "left" && this.dirY == "up") {this.direction = "n"}
+		if(this.dirX == null && this.dirY == "up") {this.direction = "ne"}
+		if(this.dirX == "right" && this.dirY == "up") {this.direction = "e"}
+		if(this.moveX === false || this.moveY === false) {
+			if(game.ticks % 5 === 0) {
+				this.sprite ++;
+			}
 		} else {
 			this.sprite = 0;
 		}

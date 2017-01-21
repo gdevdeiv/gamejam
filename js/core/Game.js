@@ -2,7 +2,8 @@ function Game(config) {
 	this.name = config.name;
 	this.canvas = config.canvas;
 	this.context = this.canvas.getContext("2d");
-
+	this.startTime = null;
+	this.endTime = null;
 	this.clock = null;
 	this.ticks = 0;
 	this.fps = config.fps;
@@ -25,6 +26,7 @@ function Game(config) {
 	};
 	this.map = new Map(new Sprite("level/level1.png"));
 	this.player = new Player();
+	this.round = new Round(0, this);
 	
 	this.init = function() {
 		this.player.init();
@@ -32,16 +34,20 @@ function Game(config) {
 	}.bind(this);
 
 	this.loop = function() {
+		this.startTime = Date.now();
 		this.canvas.width = window.innerWidth;
 		this.canvas.height = window.innerHeight;
 
 		if (this.inGame) {
+			this.round.tick();
 			this.map.tick();
 			this.player.tick();
 		}
 
 		this.ticks++;
 		clearTimeout(this.clock);
-		this.clock = setTimeout(this.loop, 1000 / this.fps);
+		this.endTime = Date.now();
+
+		this.clock = setTimeout(this.loop, 1000 / this.fps - (this.endTime- this.startTime));
 	}.bind(this);
 }

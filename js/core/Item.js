@@ -17,7 +17,7 @@ function Item(id, tileWidth,owner) {
 	}
 
 
-	this.width = 40;
+	this.width = 15;
 	this.height = this.width;
 
 	this.posX = (this.col * (this.tileWidth/2)) + (this.tileWidth / 2 - this.width / 2);
@@ -34,7 +34,7 @@ function Item(id, tileWidth,owner) {
 	}.bind(this);
 
 	this.update = function () {
-
+		
 	}.bind(this);
 
 	this.render = function () {
