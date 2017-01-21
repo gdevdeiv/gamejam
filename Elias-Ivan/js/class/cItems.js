@@ -2,14 +2,14 @@ function cItem(id){
     this.tileWidth = 50;
     this.col = Math.floor(Math.random()*(Math.floor(windowHeight/this.tileWidth)));
     this.row = Math.floor(Math.random()*(Math.floor(windowWidth/this.tileWidth)));
-    console.log(this.col+"//"+this.row);
+   // console.log(this.col+"//"+this.row);
    
 
-    this.width = 25;
-    this.height = 25;
+    this.width = 40;
+    this.height = 40;
 
-    this.posX = (this.col*this.tileWidth)+this.width/2;
-    this.posY = (this.row*this.tileWidth)+this.height/2;
+    this.posX = (this.col*this.tileWidth)+(this.tileWidth/2-this.width/2);
+    this.posY = (this.row*this.tileWidth)+(this.tileWidth/2-this.height/2);
     
     this.id = id;
     this.color;
