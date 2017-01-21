@@ -1,5 +1,5 @@
-function Item(id) {
-	this.tileWidth = 50;
+function Item(id, tileWidth) {
+	this.tileWidth = tileWidth;
 	this.col = Math.floor(Math.random() * (Math.floor(game.canvas.height / this.tileWidth)));
 	this.row = Math.floor(Math.random() * (Math.floor(game.canvas.width / this.tileWidth)));
 
@@ -48,12 +48,12 @@ function Item(id) {
 			break;
 	}
 
-	this.tick = function() {
+	this.tick = function () {
 		this.update();
 		this.render();
 	}.bind(this);
 
-	this.update = function() {
+	this.update = function () {
 
 	}.bind(this);
 

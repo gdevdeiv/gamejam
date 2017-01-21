@@ -89,6 +89,4 @@ function Player() {
 		game.context.fillStyle = "rgba(50,150,200,05)";
 		game.context.fillRect(this.posX, this.posY, this.width, this.height);
 	}.bind(this);
-
-	
 }
