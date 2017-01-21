@@ -40,6 +40,19 @@ html, body {
 	font-weight: bold;
 }
 
+.hud .round {
+	font-size: 72px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+
+.hud .tip {
+	font-size: 56px;
+	text-align: center;
+	color: white;
+}
+
 /**
  * BUTTONS
  */

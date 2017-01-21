@@ -6,10 +6,15 @@ var Round = function(round, game) {
     this.roundTime += Date.now();
     this.seconds = null;
     this.minute = null;
+	this.started = false;
 }
 
+Round.prototype.init = function () {
+	Hud.announceRound(1, "\"Hoy voy a tener suerte..\"");
+};
+
 Round.prototype.tick = function() {
-	if (this.remaining !== null && this.remaining <= 0) { return; }
+	if (this.remaining !== null && this.remaining <= 0 || this.started) { return; }
 
     this.remaining = Math.ceil((this.roundTime - Date.now()) / 1000);
     this.minute = Math.floor(this.remaining / 60);
@@ -24,6 +29,7 @@ Round.prototype.tick = function() {
     if(this.minute === 0 && this.seconds < 1) {
         console.log("fin round")
 		game.map.sweeping = true;
+		this.started = false;
         /*this.round++;
         this.roundTime = this.duration * 1000;
         this.roundTime += Date.now();
