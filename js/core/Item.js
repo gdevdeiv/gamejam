@@ -8,6 +8,9 @@ function Item(id) {
 
 	this.posX = (this.col * this.tileWidth) + (this.tileWidth / 2 - this.width / 2);
 	this.posY = (this.row * this.tileWidth) + (this.tileWidth / 2 - this.height / 2);
+	var iso = Util.cartesianToIso(this.posX,this.posY);
+	this.posX = iso.x;
+	this.posY = iso.y;
 
 	this.id = id;
 	this.color = null;
