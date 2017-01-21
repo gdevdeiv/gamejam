@@ -2,7 +2,7 @@ var Round = function(round, game) {
     this.round = round;
 	this.lastRound = 0;
     this.remaining = null;
-    this.duration = 5;
+    this.duration = 10;
     this.roundTime = this.duration * 1000;
     this.roundTime += Date.now();
     this.seconds = null;
@@ -29,7 +29,6 @@ Round.prototype.tick = function() {
     this.seconds = this.remaining - this.minute * 60;
     //console.log(this.remaining)
     //this.minute = this.remaining.getMin
-
 
 	Hud.remainingTime(this.minute, this.seconds);
     console.log(this.minute+","+this.seconds)

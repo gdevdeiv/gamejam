@@ -10,7 +10,8 @@ function Game(config) {
 
 	this.inGame = false;
 	this.menus = {
-		start: new MenuStart()
+		start: new MenuStart(),
+		over: new MenuOver()
 	};
 
 	this.tiles = {
@@ -28,6 +29,9 @@ function Game(config) {
 	this.map = new Map(new Sprite("level/level1.png"));
 	this.player = new Player();
 	this.round = new Round(0, this);
+	this.warehouse = null;
+
+	this.gameOver = false;
 	
 	this.init = function() {
 		this.player.init();
@@ -42,7 +46,9 @@ function Game(config) {
 		if (this.inGame) {
 			this.round.tick();
 			this.map.tick();
+			this.warehouse.tick();
 			this.player.tick();
+			Hud.drawInventory();
 		}
 
 		this.ticks++;

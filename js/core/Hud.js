@@ -12,4 +12,17 @@ Hud.announceRound = function(tip) {
 
 Hud.remainingTime = function(minute, seconds) {
 	$(".hud .time").text(minute + ":" + ("0" + seconds).slice(-2));
-}
+};
+
+Hud.drawInventory = function() {
+	for (var item in game.player.inventario) {
+		var type = game.player.inventario[item];
+		game.context.drawImage(itemImg[type], 20+100*item, 20, 100, 100);
+		
+	}
+};
+
+Hud.dead = function() {
+	game.gameOver = true;
+	$(game.menus.over.element).fadeIn(500);
+};
