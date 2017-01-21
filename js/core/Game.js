@@ -14,6 +14,7 @@ function Game(config) {
 	};
 
 	this.tiles = {
+		house: new Sprite("img/tiles/house.png"),
 		black: new Sprite("img/tiles/black.png"),
 		white: new Sprite("img/tiles/white.png"),
 		red: new Sprite("img/tiles/red.png"),
