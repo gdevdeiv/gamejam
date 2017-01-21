@@ -25,6 +25,13 @@ function Player() {
 		if (event.which == 39 && that.moveX) { that.dirX = "right"; }
 		if (event.which == 38 && that.moveY) { that.dirY = "up"; }
 		if (event.which == 40 && that.moveY) { that.dirY = "down"; }
+
+
+		if (event.which == 100) { game.map.gapX-= game.map.gapSize;}
+		if (event.which == 102) { game.map.gapX+= game.map.gapSize; }
+		if (event.which == 104) { game.map.gapY-= game.map.gapSize/2; }
+		if (event.which == 98) { game.map.gapY+= game.map.gapSize/2;}
+
 	});
 
 	$(document).keyup(function (event) {

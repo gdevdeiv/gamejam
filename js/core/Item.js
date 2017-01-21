@@ -1,14 +1,14 @@
 function Item(id, tileWidth) {
-	this.tileWidth = tileWidth;
-	this.col = Math.floor(Math.random() * (Math.floor(game.canvas.height / this.tileWidth)));
-	this.row = Math.floor(Math.random() * (Math.floor(game.canvas.width / this.tileWidth)));
+	this.tileWidth = tileWidth * 0.8943885546;
+	this.col = Math.floor(Math.random() * (Math.floor(game.map.level.height)))+1;
+	this.row = Math.floor(Math.random() * (Math.floor(game.map.level.width)));
 
-	this.width = 40;
-	this.height = 40;
+	this.width = 10;
+	this.height = this.width;
 
-	this.posX = (this.col * this.tileWidth) + (this.tileWidth / 2 - this.width / 2);
-	this.posY = (this.row * this.tileWidth) + (this.tileWidth / 2 - this.height / 2);
-	var iso = Util.cartesianToIso(this.posX,this.posY);
+	this.posX = (this.col * (this.tileWidth/2))+ (this.tileWidth / 2 - this.width / 2);
+	this.posY = (this.row * (this.tileWidth/2)) + (this.tileWidth / 2 - this.height / 2);
+	var iso = Util.cartesianToIso(this.posX, this.posY);
 	this.posX = iso.x;
 	this.posY = iso.y;
 
@@ -62,6 +62,6 @@ function Item(id, tileWidth) {
 
 	this.render = function () {
 		game.context.fillStyle = this.color;
-		game.context.fillRect(this.posX, this.posY, this.width, this.height);
+		game.context.fillRect(this.posX + game.map.gapX, this.posY + game.map.gapY, this.width, this.height);
 	}.bind(this);
 }

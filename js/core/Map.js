@@ -62,7 +62,9 @@ function Map(level) {
 	}.bind(this);
 
 	this.spawnItems = function (tileWidth) {
-		for (var i = 0; i < Math.floor(Math.random() * 5000); i++) {
+		var xd = Math.random()*100;
+		for (var i = 0; i < xd; i++) {
+			console.log("xd");
 			this.items.push(new Item(Math.ceil(Math.random() * 10), tileWidth));
 		}
 	}.bind(this);
