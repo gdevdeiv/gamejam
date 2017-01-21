@@ -1,0 +1,42 @@
+/**
+ * GLOBAL CSS RULES
+ */
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: #363636;
+}
+
+/**
+ * MENUS
+ */
+
+.menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+.menu.start .is-bold .title {
+	font-weight: 400;
+	font-size: 96px;
+}
+
+/**
+ * BUTTONS
+ */
+
+.button.is-large {
+	display: block;
+	width: 40%;
+	height: 64px;
+	font-size: 36px;
+	margin: 0 auto 24px;
+	transition: all .2s ease-in-out;
+}
+
+.button.is-primary.is-inverted.is-outlined:hover,
+.button.is-primary.is-inverted.is-outlined:focus {
+	color: #363636;
+}

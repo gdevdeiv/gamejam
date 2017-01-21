@@ -7,8 +7,10 @@ function start(){
 }
 
 function loop(){
-    resizeCanvas();
-    player.draw();
+
+    functionsIvan();
+    for(var i in item){item[i].draw()}
+
     clearTimeout(temp);
-    temp = setTimeout(loop,33);
+    temp = setTimeout(loop,fps);
 }
