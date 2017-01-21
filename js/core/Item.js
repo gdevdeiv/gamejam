@@ -12,7 +12,7 @@ function Item(id, tileWidth,owner) {
 		this.col = Math.floor(Math.random() * (Math.floor(game.map.level.height)))+1;
 		this.row = Math.floor(Math.random() * (Math.floor(game.map.level.width)));
 	}else{
-		this.col = this.owner.col+1;
+		this.col = this.owner.col+2;
 		this.row = this.owner.row;
 	}
 

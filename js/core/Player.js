@@ -50,7 +50,7 @@ function Player() {
 					soltar = false;
 				}
 			}
-			if(soltar){
+			if(soltar&& that.inventario.length >= 1){
 				game.map.items.push(new Item(that.inventario[0],game.map.gapSize,that));
 				that.inventario.splice(0,1);
 			}
@@ -65,7 +65,7 @@ function Player() {
 					soltar = false;
 				}
 			}
-			if(soltar){
+			if(soltar && that.inventario.length >= 2){
 				game.map.items.push(new Item(that.inventario[1],game.map.gapSize,that));
 				that.inventario.splice(1,1);
 			}
