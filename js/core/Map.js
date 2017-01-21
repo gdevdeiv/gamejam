@@ -6,8 +6,10 @@ function Map(level) {
 	this.gapProySize = this.gapSize * 0.8943885546;
 	this.gapX = -Math.floor(this.width / 2 - 1) * this.gapSize * 7;
 	this.gapY = 0;
+	this.items = [];
 
 	this.init = function() {
+		this.spawnItems();
 		this.width = this.level.width;
 		this.height = this.level.height;
 		game.context.drawImage(this.level, 0, 0);
@@ -34,6 +36,9 @@ function Map(level) {
 Map.prototype.tick = function () {
 	this.update();
 	this.render();
+	for (var item in this.items) {
+		this.items[item].tick();
+	}
 };
 
 Map.prototype.render = function () {
@@ -44,3 +49,9 @@ Map.prototype.render = function () {
 };
 
 Map.prototype.update = function () {};
+
+Map.prototype.spawnItems = function () {
+	for (var i = 0; i < Math.floor(Math.random() * 5000); i++) {
+		this.items.push(new Item(Math.ceil(Math.random() * 10)));
+	}
+};
