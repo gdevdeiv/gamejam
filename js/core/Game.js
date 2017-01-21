@@ -25,6 +25,7 @@ function Game(config) {
 	};
 	this.map = new Map(new Sprite("level/level1.png"));
 	this.player = new Player();
+	this.round = new Round(0, this);
 	
 	this.init = function() {
 		this.player.init();
@@ -36,6 +37,7 @@ function Game(config) {
 		this.canvas.height = window.innerHeight;
 
 		if (this.inGame) {
+			this.round.tick();
 			this.map.tick();
 			this.player.tick();
 		}
