@@ -26,11 +26,10 @@ function Player() {
 		if (event.which == 38 && that.moveY) { that.dirY = "up"; }
 		if (event.which == 40 && that.moveY) { that.dirY = "down"; }
 
-
-		if (event.which == 100) { game.map.gapX+= game.map.gapSize;}
-		if (event.which == 102) { game.map.gapX-= game.map.gapSize; }
-		if (event.which == 104) { game.map.gapY+= game.map.gapSize/2; }
-		if (event.which == 98) { game.map.gapY-= game.map.gapSize/2;}
+		if (event.which == 100) { game.map.gapX += game.map.gapSize; }
+		if (event.which == 102) { game.map.gapX -= game.map.gapSize; }
+		if (event.which == 104) { game.map.gapY += game.map.gapSize / 2; }
+		if (event.which == 98) { game.map.gapY -= game.map.gapSize / 2; }
 
 	});
 
@@ -44,11 +43,11 @@ function Player() {
 
 	this.init = function () {
 		this.tileWidth = game.map.gapProySize;
-		this.posX = (this.col * this.tileWidth/2) + (this.tileWidth / 2 - this.width / 2);
-		this.posY = (this.row * this.tileWidth/2) + (this.tileWidth / 2 - this.width / 2);
+		this.posX = (this.col * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
+		this.posY = (this.row * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 	}.bind(this);
 
-	this.tick = function() {
+	this.tick = function () {
 		this.update();
 		this.render();
 	}.bind(this);
@@ -72,16 +71,16 @@ function Player() {
 		}
 
 		// POS X
-		if (this.posX != this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
-			if (this.posX < this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
+		if (this.posX != this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2)) {
+			if (this.posX < this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2)) {
 				this.posX++;
-				if(Math.abs(this.posX - (this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2))) < 1){
-					this.posX = this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2);
+				if (Math.abs(this.posX - (this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2))) < 1) {
+					this.posX = this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2);
 				}
-			} else if (this.posX > this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2)) {
+			} else if (this.posX > this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2)) {
 				this.posX--;
-				if(Math.abs(this.posX - (this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2))) < 1){
-					this.posX = this.col * this.tileWidth/2 + (this.tileWidth / 2 - this.width / 2);
+				if (Math.abs(this.posX - (this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2))) < 1) {
+					this.posX = this.col * this.tileWidth / 2 + (this.tileWidth / 2 - this.width / 2);
 				}
 			}
 			this.moveX = false;
@@ -90,16 +89,16 @@ function Player() {
 		}
 
 		// POS Y
-		if (this.posY != this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2)) {
-			if (this.posY < this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2)) {
+		if (this.posY != this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2)) {
+			if (this.posY < this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2)) {
 				this.posY++;
-				if(Math.abs(this.posY - (this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2))) < 1) {
-					this.posY = this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2);
+				if (Math.abs(this.posY - (this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2))) < 1) {
+					this.posY = this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2);
 				}
-			} else if (this.posY > this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2)) {
+			} else if (this.posY > this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2)) {
 				this.posY--;
-				if(Math.abs(this.posY - (this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2))) < 1) {
-					this.posY = this.row * this.tileWidth/2 + (this.tileWidth / 2 - this.height / 2);
+				if (Math.abs(this.posY - (this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2))) < 1) {
+					this.posY = this.row * this.tileWidth / 2 + (this.tileWidth / 2 - this.height / 2);
 				}
 			}
 			this.moveY = false;
