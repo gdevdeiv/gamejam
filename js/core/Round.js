@@ -18,7 +18,7 @@ Round.prototype.tick = function() {
     //this.minute = this.remaining.getMin
 
 
-
+	Hud.remainingTime(this.minute, this.seconds);
     console.log(this.minute+","+this.seconds)
     
     if(this.minute === 0 && this.seconds < 1) {
