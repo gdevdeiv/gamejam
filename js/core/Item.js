@@ -1,7 +1,9 @@
 var itemImg = new Array();
 for(var i = 1; i <= 11; i++){
 	itemImg[i] = new Image();
-	itemImg[i].src = "../../img/sprites/"+i+".png";
+	itemImg[i].src = 	"img/sprites/"+i+".png";
+	console.log(itemImg[i].src);
+						
 }
 
 function Item(id, tileWidth) {
@@ -31,7 +33,7 @@ function Item(id, tileWidth) {
 
 	this.render = function () {
 	
-	game.context.drawImage(itemImg[this.id],this.posX,this.posY,this.width,this.height);
+	game.context.drawImage(itemImg[this.id],this.posX+game.map.gapX,this.posY+game.map.gapY,this.width,this.height);
 
 	}.bind(this);
 }
