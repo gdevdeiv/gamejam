@@ -1,5 +1,5 @@
 function Player() {
-	this.width = 35;
+	this.width = 15;
 	this.height = this.width;
 
 	this.tileWidth = null;

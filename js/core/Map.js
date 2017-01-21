@@ -4,8 +4,8 @@ function Map(level) {
 	this.height = null;
 	this.gapSize = 82;
 	this.gapProySize = this.gapSize * 0.8943885546;
-	this.gapX = 0//-Math.floor(this.width / 2 - 1) * this.gapSize * 7;
-	this.gapY = 0;
+	this.gapX = null;
+	this.gapY = null;
 	this.items = [];
 	this.sweepRow = 0;
 
@@ -13,6 +13,8 @@ function Map(level) {
 		this.spawnItems(this.gapSize);
 		this.width = this.level.width;
 		this.height = this.level.height;
+		this.gapX = Math.floor(this.width / 2 - 2) * this.gapSize;
+		this.gapY = Math.floor(this.height / 2 - 10) * this.gapSize/2;
 		game.context.drawImage(this.level, 0, 0);
 		var tempData = game.context.getImageData(0, 0, this.width, this.height);
 		var data = tempData.data;
