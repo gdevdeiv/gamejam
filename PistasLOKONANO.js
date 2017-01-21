@@ -26,16 +26,16 @@ function Pistas(){
     this.txt[] = "Has visto pisadas de osos cerca de la casa."; //
     this.txt[] = "Se escuchan aullidos de lobo bastante cercanos."; //  
 
-    this.txt[] = ""; // 
-    this.txt[] = ""; // 
+    this.txt[] = "ha llovido esta noche y el suelo esta embarrado"; // 
+    this.txt[] = "ha nevado esta noche y ahora esta todo nevado"; // 
+    /*this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
     this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
     this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
     this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
     this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
     this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
     this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
-    this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
-    this.txt[] = "Deberías buscar alimento para sobrevivir."; // 
+    this.txt[] = "Deberías buscar alimento para sobrevivir."; // */
 
     this.creaPista = function(){
         eventNum[0] = Math.floor(Math.random()*this.txt.length-1);
