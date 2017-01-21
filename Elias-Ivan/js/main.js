@@ -8,8 +8,6 @@ function start(){
 
 function loop(){
 
-    functionsIvan();
-
     clearTimeout(temp);
     temp = setTimeout(loop,fps);
 }

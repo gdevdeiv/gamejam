@@ -22,7 +22,7 @@ function cPlayer(){
                 this.posX--;
             }
  
-        
+            
 
         // POS Y
        
@@ -32,7 +32,7 @@ function cPlayer(){
                 this.posY--;
             }
 
-       
+            console.log(this.row*this.tileWidth);
 
         ctx.fillStyle = this.color;
         ctx.fillRect(this.posX,this.posY,this.width,this.height);

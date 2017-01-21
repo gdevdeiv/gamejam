@@ -9,12 +9,12 @@ function resizeCanvasIvan(){
     $("#canvas").attr("width",windowWidth);
 }
 
-function playerControlIvan(){
+
     $(document).keydown(function(event){
         if(event.which == 32){
             console.log("payaso");
         }else if(event.which == 37){
-            player.col--;
+            player.col--;console.log("izq"+player.col);
         }else if(event.which == 39){
             player.col++;
         }else if(event.which == 38){
@@ -23,5 +23,5 @@ function playerControlIvan(){
             player.row++;
         }
     });
-}
+
 
