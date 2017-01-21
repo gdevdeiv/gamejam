@@ -13,11 +13,9 @@ function MenuStart() {
 	});
 
 	$(this.element + ' .button.play').click(function() {
-		$(that.element).fadeOut(500, function() {
+		$(that.element).fadeOut(1500, function() {
 			game.map.init();
 			game.inGame = true;
-			game.round.roundTime = game.round.duration * 1000;
-			game.round.roundTime += Date.now();
 		});
 	});
 
