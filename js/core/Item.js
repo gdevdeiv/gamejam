@@ -6,7 +6,7 @@ function Item(id, tileWidth) {
 	this.width = 10;
 	this.height = this.width;
 
-	this.posX = (this.col * (this.tileWidth/2))+ (this.tileWidth / 2 - this.width / 2);
+	this.posX = (this.col * (this.tileWidth/2)) + (this.tileWidth / 2 - this.width / 2);
 	this.posY = (this.row * (this.tileWidth/2)) + (this.tileWidth / 2 - this.height / 2);
 	var iso = Util.cartesianToIso(this.posX, this.posY);
 	this.posX = iso.x;
