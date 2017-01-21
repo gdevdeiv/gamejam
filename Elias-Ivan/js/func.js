@@ -9,7 +9,6 @@ function resizeCanvasIvan(){
     $("#canvas").attr("width",windowWidth);
 }
 
-
     $(document).keydown(function(event){
         if(event.which == 32){
             console.log("payaso");
