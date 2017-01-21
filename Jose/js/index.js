@@ -5,7 +5,11 @@ $(document).ready(function(){
 });
 
 function loop() {
-    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if(maps) {
+        updateMaps();
+    }
     clearTimeout(temp);
     temp = setTimeout(loop, 1000 / fps);
 }

@@ -10,8 +10,10 @@ var Map = function(level) {
     this.level = level; // level debe ser una imagen
     this.width = this.level.width;
     this.height = this.level.height;
-    gapX = 0;
-    gapY = 0;
+    this.gapSize = 82;
+    this.gapProySize = this.gapSize * 0.8943885546;
+    this.gapX = Math.floor(this.width / 2 - 1) * this.gapSize;
+    this.gapY = 0;
     ctx.drawImage(this.level, 0, 0);
     var tempData = ctx.getImageData(0,0,this.width, this.height);
     var data = tempData.data;
@@ -33,8 +35,7 @@ var Map = function(level) {
 
 function updateMaps() {
     for (var map in maps) {
-        maps[map].update();
-        maps[map].render();
+        maps[map].tick();
     }
 }
 
@@ -45,6 +46,12 @@ Map.prototype.tick = function(){
 
 Map.prototype.render = function() {
     for (var tile in this.tiles) {
-        ctx.drawImage(tiles[tile].img, tiles[tile].x, tiles[tile].y);
+        var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
+        ctx.drawImage(this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
+        //console.log("x: "+this.tiles[tile].x+"; y: "+this.tiles[tile].y)
     }
-}
+};
+
+Map.prototype.update = function() {
+
+};
