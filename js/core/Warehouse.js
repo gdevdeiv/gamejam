@@ -14,6 +14,5 @@ Warehouse.prototype.update = function() {
             this.stored.push(game.player.inventario[item]);
         }
         game.player.inventario = [];
-        console.log("has vaciado tu inventario")
     }
 };

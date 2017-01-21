@@ -25,7 +25,7 @@ function Map(level) {
 			var tempY = Math.floor((i / 4) / this.width);
 			if (data[i] == 1 && data[i + 1] == 2 && data[i + 2] == 3) { 
 				var tempType = "house"; 
-				game.warehouse = new Warehouse(tempX, tempY);
+				
 				console.log("house");
 			}
 			else if (data[i] < 10 && data[i + 1] < 10 && data[i + 2] < 10) { var tempType = "black"; }
@@ -39,6 +39,7 @@ function Map(level) {
 			else if (data[i] < 10 && data[i + 1] > 240 && data[i + 2] > 240) { var tempType = "cyan"; }
 			this.tiles.push(new Tile(tempType, tempX, tempY));
 		}
+		game.warehouse = new Warehouse(1, 1);
 	}.bind(this);
 
 	this.sweep = function () {
