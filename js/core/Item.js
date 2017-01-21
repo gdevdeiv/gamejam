@@ -5,12 +5,19 @@ for(var i = 1; i <= 11; i++){
 	//console.log(itemImg[i].src);						
 }
 
-function Item(id, tileWidth) {
+function Item(id, tileWidth,owner) {
 	this.tileWidth = tileWidth * 0.8943885546;
-	this.col = Math.floor(Math.random() * (Math.floor(game.map.level.height)))+1;
-	this.row = Math.floor(Math.random() * (Math.floor(game.map.level.width)));
+	this.owner = owner;
+	if(!(this.owner instanceof Player)){
+		this.col = Math.floor(Math.random() * (Math.floor(game.map.level.height)))+1;
+		this.row = Math.floor(Math.random() * (Math.floor(game.map.level.width)));
+	}else{
+		this.col = this.owner.col+1;
+		this.row = this.owner.row;
+	}
 
-	this.width = 10;
+
+	this.width = 40;
 	this.height = this.width;
 
 	this.posX = (this.col * (this.tileWidth/2)) + (this.tileWidth / 2 - this.width / 2);

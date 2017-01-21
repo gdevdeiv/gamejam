@@ -21,15 +21,52 @@ function Player() {
 
 	var that = this;
 
+	this.inventario = [];
+
 	$(document).keydown(function (event) {
 		if (event.which == 32) {
 			console.log(that.col);
 			for(var i in game.map.items){
-				if(that.col == game.map.items[i].col){
-					console.log("xd");
+				if(that.col+1 == game.map.items[i].col && that.row == game.map.items[i].row){
+					if(that.inventario.length < 2){
+						that.inventario.push(game.map.items[i].id);
+						game.map.items.splice(i,1);
+						console.log(that.inventario);
+					}
 				}
 			}
 		}
+		if (event.which == 49) {
+			var soltar = true;
+			for(var i in game.map.items){		
+				if(that.col+1 == game.map.items[i].col && that.row == game.map.items[i].row && that.inventario.length > 0){
+					var aux = that.inventario[0];
+					that.inventario[0] = game.map.items[i].id;
+					game.map.items[i].id = aux;
+					soltar = false;
+				}
+			}
+			if(soltar){
+				game.map.items.push(new Item(that.inventario[0],game.map.gapSize,that));
+				that.inventario.splice(0,1);
+			}
+		}
+		if (event.which == 50) {
+			var soltar = true;
+			for(var i in game.map.items){
+				if(that.col+1 == game.map.items[i].col && that.row == game.map.items[i].row && that.inventario.length > 1){
+					var aux = that.inventario[1];
+					that.inventario[1] = game.map.items[i].id;
+					game.map.items[i].id = aux;
+					soltar = false;
+				}
+			}
+			if(soltar){
+				game.map.items.push(new Item(that.inventario[1],game.map.gapSize,that));
+				that.inventario.splice(1,1);
+			}
+		}
+
 		if (event.which == 37 && that.moveX) { that.dirX = "left"; }
 		if (event.which == 39 && that.moveX) { that.dirX = "right"; }
 		if (event.which == 38 && that.moveY) { that.dirY = "up"; }
