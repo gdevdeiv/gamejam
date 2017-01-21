@@ -1,11 +1,12 @@
 function Hud() {}
 
-Hud.announceRound = function(round, tip) {
-	$(".hud .round").text("Round " + round).fadeIn(500);
+Hud.announceRound = function(tip) {
+	$(".hud .round").text("Round " + (game.round.lastRound + 1)).fadeIn(500);
 	$(".hud .tip").text(tip).fadeIn(500);
 	setTimeout(function () {
 		$(".hud .round").fadeOut(500);
 		$(".hud .tip").fadeOut(500);
+		game.round.start();
 	}, 1000);
 };
 
