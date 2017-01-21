@@ -10,6 +10,9 @@ Warehouse.prototype.tick = function() {
 
 Warehouse.prototype.update = function() {
     if(this.col === game.player.col && this.row === game.player.row) {
-        
+        for (var item in game.player.inventario) {
+            this.stored.push(game.player.inventario[item]);
+        }
+        game.player.inventario = [];
     }
 };
