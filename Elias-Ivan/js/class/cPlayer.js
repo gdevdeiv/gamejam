@@ -7,19 +7,35 @@ function cPlayer(){
     this.col = 0;
     this.row = 0;
 
-    this.posX = this.col*this.tileWidth;
-    this.posY = this.row*this.tileWidth;
+    this.posX = (this.col*this.tileWidth)+this.width/2;
+    this.posY = (this.row*this.tileWidth)+this.height/2;
     
     this.hp = 100;
     this.moveX = true;
     this.moveY = true;
+
+    this.dirY = "";
+    this.dirX = "";
     this.draw = function(){
 
+        if(this.moveX && this.dirX=="right"){
+            this.col++;
+        }else if(this.moveX && this.dirX == "left"){
+            this.col--;
+        }
+
+        if(this.moveY && this.dirY=="up"){
+            this.row--;
+        }else if(this.moveY && this.dirY == "down"){
+            this.row++;
+        }
+        console.log(this.dirX);
+        
             // POS X
-        if(this.posX != this.col*this.tileWidth){
-            if(this.posX<this.col*this.tileWidth){
+        if(this.posX != this.col*this.tileWidth+this.width/2){
+            if(this.posX<this.col*this.tileWidth+this.width/2){
                 this.posX++;
-            }else if(this.posX>this.col*this.tileWidth){
+            }else if(this.posX>this.col*this.tileWidth+this.width/2){
                 this.posX--;
             }
             this.moveX = false;
@@ -28,10 +44,10 @@ function cPlayer(){
         }
 
         // POS Y
-        if(this.posY != this.row*this.tileWidth){
-            if(this.posY<this.row*this.tileWidth){
+        if(this.posY != this.row*this.tileWidth+this.height/2){
+            if(this.posY<this.row*this.tileWidth+this.height/2){
                 this.posY++;
-            }else if(this.posY>this.row*this.tileWidth){
+            }else if(this.posY>this.row*this.tileWidth+this.height/2){
                 this.posY--;
             }
             this.moveY = false;
