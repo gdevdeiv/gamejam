@@ -138,9 +138,14 @@ function Player() {
 			this.sprite = 0;
 		}
 		for (var tile in game.map.tiles) {
-			if (game.map.tiles[tile].frozen && game.map.tiles[tile].x == this.col && game.map.tiles[tile].y == this.row) {
-				Hud.dead();
-				break;
+			if(!(game.warehouse.col + 1 >= game.player.col &&
+			game.warehouse.col <= game.player.col&&
+			game.warehouse.row + 1 >= game.player.row&&
+			game.warehouse.row <= game.player.col)) {
+				if (game.map.tiles[tile].frozen && game.map.tiles[tile].x == this.col && game.map.tiles[tile].y == this.row) {
+					Hud.dead();
+					break;
+				}
 			}
 		}
 	}.bind(this);
