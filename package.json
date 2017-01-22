@@ -1,12 +1,12 @@
 {
-  "name": "gamejam",
+  "name": "cold-waves",
   "version": "1.0.0",
-  "description": "Gamejam",
+  "description": "Survive.",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ivan puto amo",
+  "author": "",
   "license": "UNLICENSED",
   "dependencies": {
     "bulma": "^0.3.1",

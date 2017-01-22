@@ -2,7 +2,7 @@ var game;
 
 $(function() {
 	game = new Game({
-		name: "Gamejam",
+		name: "Cold Waves",
 		canvas: document.getElementById("canvas"),
 		fps: 60
 	});
