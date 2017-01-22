@@ -28,6 +28,20 @@ function Game(config) {
 		cyan: new Sprite("img/tiles/cyan.png"),
 		magenta: new Sprite("img/tiles/magenta.png")
 	};
+	this.trees = {
+		one: {
+			dry: new Sprite("img/trees/pine1_dry.png"),
+			snow: new Sprite("img/trees/pine1_snow.png"),
+		},
+		two: {
+			dry: new Sprite("img/trees/pine2_dry.png"),
+			snow: new Sprite("img/trees/pine2_snow.png"),
+		},
+		three: {
+			dry: new Sprite("img/trees/pine3_dry.png"),
+			snow: new Sprite("img/trees/pine3_snow.png"),
+		},
+	}
 	this.map = new Map();
 	this.player = new Player();
 	this.round = new Round(0, this);
