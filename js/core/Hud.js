@@ -39,16 +39,17 @@ Hud.drawInventory = function() {
 Hud.drawWarehouse = function() {
 	for (var item in game.warehouse.stored) {
 		var type = game.warehouse.stored[item];
+		var centrado = -12.5*game.warehouse.stored.length
 		game.context.beginPath();
-		game.context.moveTo(game.canvas.width - 60, item * 50 + 10);
-		game.context.lineTo(game.canvas.width-10, item * 50 + 10);
-		game.context.lineTo(game.canvas.width-10, item * 50 + 60);
-		game.context.lineTo(game.canvas.width - 60, item*50 + 60);
-		game.context.lineTo(game.canvas.width - 60, item*50 + 10);
+		game.context.moveTo(game.canvas.width - 60, item * 50 + 10+200+centrado);
+		game.context.lineTo(game.canvas.width-10, item * 50 + 10+200+centrado);
+		game.context.lineTo(game.canvas.width-10, item * 50 + 60+200+centrado);
+		game.context.lineTo(game.canvas.width - 60, item*50 + 60+200+centrado);
+		game.context.lineTo(game.canvas.width - 60, item*50 + 10+200+centrado);
 		game.context.stroke();
 		game.context.fillStyle = "rgba(0,255,0,0.3)";
 		game.context.fill();
-		game.context.drawImage(itemImg[type], game.canvas.width - 60, item*50+10, 50, 50);
+		game.context.drawImage(itemImg[type], game.canvas.width - 60, item*50+10+200+centrado, 50, 50);
 	}
 }
 

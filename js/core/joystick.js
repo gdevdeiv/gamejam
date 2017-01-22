@@ -114,7 +114,15 @@ Joystick.prototype.input = function() {
             }
         }
         if (this.touchStart1X > game.canvas.width / 2) {
-            
+            for(var i in game.map.items){
+				if(game.player.col+2 == game.map.items[i].col && game.player.row == game.map.items[i].row){
+					if(game.player.inventario.length < 2){
+						game.player.inventario.push(game.map.items[i].id);
+						game.map.items.splice(i,1);
+						//console.log(that.inventario);
+					}
+				}
+			}
         }
     }
     if (this.touchStart2X !== null) {
@@ -151,7 +159,15 @@ Joystick.prototype.input = function() {
             }
         }
         if (this.touchStart2X > game.canvas.width / 2) {
-            
+            for(var i in game.map.items){
+				if(game.player.col+2 == game.map.items[i].col && game.player.row == game.map.items[i].row){
+					if(game.player.inventario.length < 2){
+						game.player.inventario.push(game.map.items[i].id);
+						game.map.items.splice(i,1);
+						//console.log(that.inventario);
+					}
+				}
+			}
         }
     }
 }

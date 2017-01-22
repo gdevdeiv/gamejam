@@ -78,9 +78,10 @@ function Map() {
 		for (var tile in this.tiles) {
 			var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
 			game.context.drawImage(this.tiles[tile].frozen ? game.tiles.white.img : this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
-			for(var item in game.map.items) {
-				game.map.items[item].render();
-			}
+
+		}
+		for(var item in game.map.items) {
+			game.map.items[item].render();
 		}
 		for(var tile in this.tiles) {
 			var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
