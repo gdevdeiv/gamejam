@@ -105,8 +105,8 @@ function Player() {
 
 		var iso = Util.cartesianToIso(this.posX/2, this.posY/2);
 	
-		game.map.gapX = 2*iso.x; console.log(this.posX+","+game.map.gapX+","+iso.x)
-		game.map.gapY = -iso.y; console.log(this.posY+","+game.map.gapY+","+iso.y)
+		game.map.gapX = 2*iso.x; //console.log(this.posX+","+game.map.gapX+","+iso.x)
+		game.map.gapY = -iso.y; //console.log(this.posY+","+game.map.gapY+","+iso.y)
 
 
 	}.bind(this);
@@ -210,8 +210,8 @@ function Player() {
 		var iso = Util.cartesianToIso(this.posX, this.posY);
 		game.context.drawImage(animationSprites[this.direction+this.sprite],iso.x + game.map.gapX, iso.y + game.map.gapY, this.width, this.height);
 		///////////////////////////////////////
-		game.map.gapX = -iso.x + game.canvas.width/2 ; console.log(this.posX+","+game.map.gapX+","+iso.x)
-		game.map.gapY = -iso.y + game.canvas.height/2; console.log(this.posY+","+game.map.gapY+","+iso.y)
+		game.map.gapX = -iso.x + game.canvas.width/2 ; //console.log(this.posX+","+game.map.gapX+","+iso.x)
+		game.map.gapY = -iso.y + game.canvas.height/2; //console.log(this.posY+","+game.map.gapY+","+iso.y)
 		///////////////////////////////////////
 	}.bind(this);
 }
