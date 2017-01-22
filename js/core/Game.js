@@ -55,7 +55,7 @@ function Game(config) {
 			this.warehouse.tick();
 			this.player.tick();
 			this.cursor.tick();
-			this.joystick.input();
+			this.player.joyStick();
 			Hud.drawInventory();
 			Hud.drawWarehouse();
 		}
