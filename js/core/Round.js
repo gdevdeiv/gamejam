@@ -29,7 +29,7 @@ Round.prototype.start = function () {
 	this.roundTime = this.duration * 1000;
 	this.roundTime += Date.now();
 	this.remaining = Math.ceil((this.roundTime - Date.now()) / 1000);
-	Hud.announceRound(this.tips[Math.floor(Math.random() * this.tips.length)]);
+	Hud.announceRound(this.tips[Math.floor(Math.random() * this.tips.length)].msg);
 	this.started = true;
 };
 
