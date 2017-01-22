@@ -30,6 +30,7 @@ function Game(config) {
 	this.player = new Player();
 	this.round = new Round(0, this);
 	this.warehouse = null;
+	this.cursor = new Cursor();
 
 	this.gameOver = false;
 	
@@ -48,6 +49,7 @@ function Game(config) {
 			this.map.tick();
 			this.warehouse.tick();
 			this.player.tick();
+			this.cursor.tick();
 			Hud.drawInventory();
 			Hud.drawWarehouse();
 		}
