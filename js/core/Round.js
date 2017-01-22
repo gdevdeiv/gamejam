@@ -8,6 +8,20 @@ var Round = function(round, game) {
 	this.seconds = null;
 	this.minute = null;
 	this.started = false;
+	this.tips = [
+		"Hoy vas a tener suerte",
+		"Deberías buscar alimento para sobrevivir.",
+		"Te sientes hambriento.",
+		"Parece que están llegando nuves...",
+		"Parece que están llegando nuves oscuras.",
+		"Bajarán las temperaturas drásticamente.",
+		"Tienes frío.",
+		"Hay animales salvajes cerca, podrían atacarte.",
+		"Has visto pisadas de osos cerca de la casa.",
+		"Se escuchan aullidos de lobo bastante cercanos.",
+		"ha llovido esta noche y el suelo esta embarrado",
+		"ha nevado esta noche y ahora esta todo nevado"
+	]
 }
 
 Round.prototype.start = function () {
@@ -15,6 +29,7 @@ Round.prototype.start = function () {
 	this.roundTime = this.duration * 1000;
 	this.roundTime += Date.now();
 	this.remaining = Math.ceil((this.roundTime - Date.now()) / 1000);
+	Hud.announceRound(this.tips[Math.floor(Math.random() * this.tips.length)]);
 	this.started = true;
 };
 

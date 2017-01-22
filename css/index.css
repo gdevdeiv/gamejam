@@ -18,7 +18,8 @@ html, body {
 	left: 0;
 	width: 100%;
 }
-.menu.start .is-bold .title {
+.menu.start .is-bold .title,
+.menu.over .is-bold .title {
 	font-weight: 400;
 	font-size: 96px;
 }

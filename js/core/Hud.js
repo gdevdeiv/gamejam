@@ -6,8 +6,7 @@ Hud.announceRound = function(tip) {
 	setTimeout(function () {
 		$(".hud .round").fadeOut(500);
 		$(".hud .tip").fadeOut(500);
-		game.round.start();
-	}, 1000);
+	}, 2000);
 };
 
 Hud.remainingTime = function(minute, seconds) {
@@ -28,9 +27,9 @@ Hud.drawInventory = function() {
 		game.context.fillStyle = "rgba(255,0,0,0.3)";
 		game.context.fill();
 		game.context.drawImage(itemImg[type], 25+100*item, 25, 90, 90);
-		game.context.fillStyle = "black";
+		game.context.fillStyle = "white";
 		game.context.font = "30px Arial";
-		game.context.fillText(""+item,30+100*item,45);
+		game.context.fillText(""+(parseInt(item) + 1),25+100*item,45);
 		
 	}
 };
