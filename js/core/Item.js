@@ -9,8 +9,8 @@ function Item(id, tileWidth,owner) {
 	this.tileWidth = tileWidth * 0.8943885546;
 	this.owner = owner;
 	if(!(this.owner instanceof Player)){
-		this.col = Math.floor(Math.random() * (Math.floor(game.map.level.height)))+1;
-		this.row = Math.floor(Math.random() * (Math.floor(game.map.level.width)));
+		this.col = Math.floor(Math.random() * (Math.floor(game.map.level.img.height)))+1;
+		this.row = Math.floor(Math.random() * (Math.floor(game.map.level.img.width)));
 	}else{
 		this.col = this.owner.col+2;
 		this.row = this.owner.row;

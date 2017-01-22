@@ -8,8 +8,9 @@ function MenuOver() {
 
 	$(this.element + ' .button.replay').click(function() {
 		$(that.element).fadeOut(1500, function() {
+			game.player.init();
 			game.map.init();
-			// game.inGame = true;
+			game.gameOver = false;
 			game.round.start();
 		});
 	});

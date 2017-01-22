@@ -93,8 +93,8 @@ function Player() {
 
 	this.init = function () {
 		this.tileWidth = game.map.gapProySize;
-		this.col = Math.round(game.map.level.width / 2);
-		this.row = Math.round(game.map.level.width / 2);
+		this.col = Math.round(game.map.level.img.width / 2);
+		this.row = Math.round(game.map.level.img.width / 2);
 		this.posX = ((this.col+this.renderCorrectX) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 		this.posY = ((this.row+this.renderCorrectY) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 
@@ -106,6 +106,7 @@ function Player() {
 	}.bind(this);
 
 	this.update = function () {
+		if (game.gameOver) { return; }
 		if(this.dirX == "right" && this.dirY == null) {this.direction = "se"}
 		if(this.dirX == "right" && this.dirY == "down") {this.direction = "s"}
 		if(this.dirX == null && this.dirY == "down") {this.direction = "sw"}

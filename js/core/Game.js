@@ -1,4 +1,6 @@
 function Game(config) {
+	var that = this;
+
 	this.name = config.name;
 	this.canvas = config.canvas;
 	this.context = this.canvas.getContext("2d");
@@ -26,7 +28,7 @@ function Game(config) {
 		cyan: new Sprite("img/tiles/cyan.png"),
 		magenta: new Sprite("img/tiles/magenta.png")
 	};
-	this.map = new Map(new Sprite("level/level1.png"));
+	this.map = new Map();
 	this.player = new Player();
 	this.round = new Round(0, this);
 	this.warehouse = null;
@@ -35,7 +37,9 @@ function Game(config) {
 	this.gameOver = false;
 	
 	this.init = function() {
-		this.player.init();
+		setTimeout(function() {
+			that.inGame = true;
+		}, 1000);
 		this.clock = setTimeout(this.loop, 1000 / this.fps);
 	}.bind(this);
 
