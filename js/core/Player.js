@@ -132,7 +132,6 @@ function Player() {
 		}
 		for (var tile in game.map.tiles) {
 			if (game.map.tiles[tile].frozen && game.map.tiles[tile].x == this.col && game.map.tiles[tile].y == this.row) {
-				this.health--;
 				Hud.dead();
 				break;
 			}

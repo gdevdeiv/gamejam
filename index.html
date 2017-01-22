@@ -3,8 +3,11 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+	<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
 	<title>Gamejam</title>
 	<link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
@@ -23,7 +26,7 @@
 							<i class="fa fa-spinner fa-3x fa-spin" style="color:#FFF"></i>
 						</span>
 					</div>
-					<div class="loaded" style="display:none;padding-top:6vh">
+					<div class="loaded" style="display:none">
 						<button class="button is-large is-primary is-inverted is-outlined play">PLAY</button>
 						<button class="button is-large is-primary is-inverted is-outlined credits">CREDITS</button>
 					</div>
@@ -35,6 +38,7 @@
 		<section class="hero is-dark is-bold is-fullheight" style="background:rgba(0, 0, 0, 0.2)">
 			<div class="hero-body">
 				<div class="container has-text-centered">
+					<h1 class="title">Game Over</h1>
 					<button class="button is-large is-primary is-inverted is-outlined replay">REPLAY</button>
 					<button class="button is-large is-primary is-inverted is-outlined start">MAIN MENU</button>
 				</div>
@@ -43,9 +47,9 @@
 	</div>
 	<div class="hud">
 		<section class="hero is-fullheight">
-			<div class="hero-head">
+			<div class="hero-head" style="padding-left:15px;padding-right:15px">
 				<div class="container">
-					<h1 class="title time"></h1>
+					<h1 class="title time" style="display:none"></h1>
 				</div>
 			</div>
 			<div class="hero-body">
@@ -58,6 +62,7 @@
 	</div>
 </body>
 
+<script src="cordova.js"></script>
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="js/util/Util.js"></script>
 <script src="js/core/Menu.js"></script>
