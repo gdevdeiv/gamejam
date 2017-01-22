@@ -2,7 +2,7 @@ var itemImg = new Array();
 for(var i = 1; i <= 11; i++){
 	itemImg[i] = new Image();
 	itemImg[i].src = 	"img/sprites/"+i+".png";
-	//console.log(itemImg[i].src);						
+	//console.log(itemImg[i].src);
 }
 
 function Item(id, tileWidth,owner) {
