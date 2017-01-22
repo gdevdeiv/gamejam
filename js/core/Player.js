@@ -97,6 +97,8 @@ function Player() {
 		this.row = Math.round(game.map.level.width / 2);
 		this.posX = ((this.col+this.renderCorrectX) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 		this.posY = ((this.row+this.renderCorrectY) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
+		game.cursor.targetX = this.col;
+    	game.cursor.targetY = this.row;
 
 	}.bind(this);
 
@@ -106,14 +108,14 @@ function Player() {
 	}.bind(this);
 
 	this.update = function () {
-		if(this.dirX == "right" && this.dirY == null) {this.direction = "se"}
-		if(this.dirX == "right" && this.dirY == "down") {this.direction = "s"}
-		if(this.dirX == null && this.dirY == "down") {this.direction = "sw"}
-		if(this.dirX == "left" && this.dirY == "down") {this.direction = "w"}
-		if(this.dirX == "left" && this.dirY == null) {this.direction = "nw"}
-		if(this.dirX == "left" && this.dirY == "up") {this.direction = "n"}
-		if(this.dirX == null && this.dirY == "up") {this.direction = "ne"}
-		if(this.dirX == "right" && this.dirY == "up") {this.direction = "e"}
+			if(this.dirX == "right" && this.dirY == null) {this.direction = "se"}
+			if(this.dirX == "right" && this.dirY == "down") {this.direction = "s"}
+			if(this.dirX == null && this.dirY == "down") {this.direction = "sw"}
+			if(this.dirX == "left" && this.dirY == "down") {this.direction = "w"}
+			if(this.dirX == "left" && this.dirY == null) {this.direction = "nw"}
+			if(this.dirX == "left" && this.dirY == "up") {this.direction = "n"}
+			if(this.dirX == null && this.dirY == "up") {this.direction = "ne"}
+			if(this.dirX == "right" && this.dirY == "up") {this.direction = "e"}
 		if(this.moveX === false || this.moveY === false) {
 			if(game.ticks % 5 === 0) {
 				this.sprite ++;
@@ -137,14 +139,18 @@ function Player() {
 
 		if (this.moveX && this.dirX == "right") {
 			this.col++;
+			game.cursor.targetX++;
 		} else if (this.moveX && this.dirX == "left") {
 			this.col--;
+			game.cursor.targetX--;
 		}
 
 		if (this.moveY && this.dirY == "up") {
 			this.row--;
+			game.cursor.targetY--;
 		} else if (this.moveY && this.dirY == "down") {
 			this.row++;
+			game.cursor.targetY++;
 		}
 
 		// POS X
@@ -185,6 +191,7 @@ function Player() {
 
 		game.context.fillStyle = "rgba(50,150,200,05)";
 		var iso = Util.cartesianToIso(this.posX, this.posY);
+		if(this.direction === "") {this.direction = "s"}
 		game.context.drawImage(animationSprites[this.direction+this.sprite],iso.x + game.map.gapX, iso.y + game.map.gapY, this.width, this.height);
 	}.bind(this);
 }
