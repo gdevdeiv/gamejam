@@ -1,4 +1,5 @@
 var Round = function(round, game) {
+	var that = this;
 	this.round = round;
 	this.lastRound = -1;
 	this.remaining = null;
@@ -78,6 +79,10 @@ Round.prototype.tick = function() {
 		}
 		if (this.survived) {
 			Hud.dead();
+		} else {
+			setTimeout(function() {
+				that.start();
+			}, 2500);
 		}
 		game.map.sweeping = true;
 		this.started = false;
