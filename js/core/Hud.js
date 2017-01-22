@@ -53,5 +53,6 @@ Hud.drawWarehouse = function() {
 
 Hud.dead = function() {
 	game.gameOver = true;
+	game.inGame = false;
 	$(game.menus.over.element).fadeIn(500);
 };
