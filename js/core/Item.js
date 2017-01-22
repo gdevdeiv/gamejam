@@ -30,7 +30,7 @@ function Item(id, tileWidth,owner) {
 	
 	this.tick = function () {
 		this.update();
-		this.render();
+		//this.render();
 	}.bind(this);
 
 	this.update = function () {
