@@ -43,7 +43,7 @@ function Map() {
 			else if (data[i] > 240 && data[i + 1] > 240 && data[i + 2] < 10) { var tempType = "yellow"; }
 			else if (data[i] > 240 && data[i + 1] < 10 && data[i + 2] > 240) { var tempType = "magenta"; }
 			else if (data[i] < 10 && data[i + 1] > 240 && data[i + 2] > 240) { var tempType = "cyan"; }
-			this.tiles.push(new Tile(tempType, tempX, tempY));
+			this.tiles.push(new Tile(tempType, tempX, tempY, data[i + 3]));
 		}
 		game.warehouse = new Warehouse(1, 1);
 	}.bind(this);
@@ -69,7 +69,7 @@ function Map() {
 	}.bind(this);
 
 	this.update = function () {
-		if (game.ticks % 15 === 0 && this.sweeping) {
+		if (game.ticks % 4 === 0 && this.sweeping) {
 			this.sweep();
 		}
 	}.bind(this);
@@ -78,6 +78,9 @@ function Map() {
 		for (var tile in this.tiles) {
 			var iso = Util.cartesianToIso(this.tiles[tile].x * this.gapProySize / 2, this.tiles[tile].y * this.gapProySize / 2);
 			game.context.drawImage(this.tiles[tile].frozen ? game.tiles.white.img : this.tiles[tile].img, iso.x + this.gapX, iso.y + this.gapY);
+			if (this.tiles[tile].tree) {
+				game.context.drawImage(this.tiles[tile].frozen ? game.trees.one.snow.img : game.trees.one.dry.img, iso.x + this.gapX, iso.y + this.gapY);
+			}
 		}
 	}.bind(this);
 

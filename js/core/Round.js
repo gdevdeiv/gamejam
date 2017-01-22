@@ -1,8 +1,9 @@
 var Round = function(round, game) {
+	var that = this;
 	this.round = round;
 	this.lastRound = -1;
 	this.remaining = null;
-	this.duration = 20;
+	this.duration = 35;
 	this.roundTime = this.duration * 1000;
 	this.roundTime += Date.now();
 	this.seconds = null;
@@ -38,6 +39,7 @@ var Round = function(round, game) {
 }
 
 Round.prototype.start = function () {
+	game.map.init();
 	this.lastRound++;
 	this.roundTime = this.duration * 1000;
 	this.roundTime += Date.now();
@@ -76,10 +78,24 @@ Round.prototype.tick = function() {
 			console.log("Has sobrevivido? " + this.survived);
 			console.log("Items guardados: " + game.warehouse.stored);
 		}
-		if (this.survived) {
-			Hud.dead();
+		if (this.tip.event === null) {
+			var that = this;
+			setTimeout(function() {
+				that.start();
+			}, 2500);
+			game.map.sweeping = true;
+			this.started = false;
+		} else {
+			if (!this.survived) {
+				Hud.dead();
+			} else {
+				var that = this;
+				setTimeout(function() {
+					that.start();
+				}, 2500);
+			}
+			game.map.sweeping = true;
+			this.started = false;
 		}
-		game.map.sweeping = true;
-		this.started = false;
 	}
 }

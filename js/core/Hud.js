@@ -54,8 +54,15 @@ Hud.drawWarehouse = function() {
 
 Hud.dead = function() {
 	game.gameOver = true;
-	game.round.survived = false;
 	$(".hud .time").fadeOut(500, function () {
 		$(game.menus.over.element).fadeIn(500);
+	});
+};
+
+Hud.survived = function () {
+	$(".hud .msg").fadeIn(500, function () {
+		setTimeout(function() {
+			$(".hud .msg").fadeOut(500);
+		}, 1500);
 	});
 };
