@@ -58,3 +58,11 @@ Hud.dead = function() {
 		$(game.menus.over.element).fadeIn(500);
 	});
 };
+
+Hud.survived = function () {
+	$(".hud .msg").fadeIn(500, function () {
+		setTimeout(function() {
+			$(".hud .msg").fadeOut(500);
+		}, 1500);
+	});
+};

@@ -71,7 +71,7 @@ function Map() {
 	}.bind(this);
 
 	this.update = function () {
-		if (game.ticks % 15 === 0 && this.sweeping) {
+		if (game.ticks % 4 === 0 && this.sweeping) {
 			this.sweep();
 		}
 	}.bind(this);
