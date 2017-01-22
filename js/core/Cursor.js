@@ -9,6 +9,9 @@ var Cursor = function() {
     this.row = null;
     this.col = null;
     this.click = false;
+    this.targetX = null;
+    this.targetY = null;
+    this.speed = 35;
     $("#canvas").on('mousemove', function(event){
         that.isoX = event.pageX - game.map.gapX;
         that.isoY = event.pageY - game.map.gapY;
@@ -40,9 +43,30 @@ Cursor.prototype.update = function() {
     this.cursorX =  cursorIso.x * game.map.gapProySize / 2 + game.map.gapX;
     this.cursorY = cursorIso.y * game.map.gapProySize / 2 + game.map.gapY;
     console.log("columna: "+this.col+", fila: "+this.row);
+
     if(this.click) {
-        game.player.col = this.col - 1;
-        game.player.row = this.row;
+        this.targetX = this.col - 1;
+        this.targetY = this.row;
+    }
+    if(game.player.row < this.targetY) {
+        if(game.ticks % this.speed === 0) {
+            game.player.row++;
+        }
+    }
+    if(game.player.row > this.targetY) {
+        if(game.ticks % this.speed === 0) {
+            game.player.row--;
+        }
+    }
+    if(game.player.col < this.targetX) {
+        if(game.ticks % this.speed === 0) {
+            game.player.col++;
+        }
+    }
+    if(game.player.col > this.targetX) {
+        if(game.ticks % this.speed === 0) {
+            game.player.col--;
+        }
     }
     this.click = false;
 }
