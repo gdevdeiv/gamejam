@@ -10,7 +10,10 @@ var Warehouse = function(col, row) {
 	}.bind(this);
 
 	this.update = function () {
-		if(this.col === game.player.col && this.row === game.player.row) {
+		if(this.col + 2 >= game.player.col &&
+		this.col -1<= game.player.col&&
+		this.row + 2 >= game.player.row&&
+		this.row -1<= game.player.col) {
 			for (var item in game.player.inventario) {
 				this.stored.push(game.player.inventario[item]);
 			}

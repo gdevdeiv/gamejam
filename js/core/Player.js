@@ -5,6 +5,8 @@ function Player() {
 	this.maxSprites = 3;
 	this.direction = "s";
 	this.health = 10;
+	this.ivanX = false;
+	this.ivanY = false;
 
 	this.tileWidth = null;
 
@@ -195,6 +197,18 @@ function Player() {
 		if(this.direction === "") {this.direction = "s"}
 		game.context.drawImage(animationSprites[this.direction+this.sprite],iso.x + game.map.gapX, iso.y + game.map.gapY, this.width, this.height);
 	}.bind(this);
+}
+
+Player.prototype.joyStick = function() {
+	this.ivanX = false;
+	this.ivanY = false;
+	game.joystick.input();
+	if(this.ivanX == false) {
+		this.dirX = null;
+	}
+	if(this.ivanY == false) {
+		this.dirY = null;
+	}
 }
 
 var animationSprites = [];
