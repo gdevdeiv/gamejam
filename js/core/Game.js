@@ -49,6 +49,7 @@ function Game(config) {
 			this.warehouse.tick();
 			this.player.tick();
 			Hud.drawInventory();
+			Hud.drawWarehouse();
 		}
 
 		this.ticks++;
