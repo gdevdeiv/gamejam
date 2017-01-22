@@ -8,7 +8,6 @@ var Cursor = function() {
     this.cartY = null;
     this.row = null;
     this.col = null;
-    this.click = false;
     this.targetX = null;
     this.targetY = null;
     this.speed = 35;
@@ -17,12 +16,12 @@ var Cursor = function() {
         that.isoY = event.pageY - game.map.gapY;
     });
     $("#canvas").on('click', function(event) {
-        that.click = true;
+
     });
     $("#canvas").on('touchStart', function(event) {
         that.isoX = event.touches[0].pageX - game.map.gapX;
         that.isoY = event.touches[0].pageY - game.map.gapY;
-        that.click = true;
+
     });
 };
 
@@ -42,33 +41,10 @@ Cursor.prototype.update = function() {
     var cursorIso = Util.cartesianToIso(this.col, this.row); 
     this.cursorX =  cursorIso.x * game.map.gapProySize / 2 + game.map.gapX;
     this.cursorY = cursorIso.y * game.map.gapProySize / 2 + game.map.gapY;
-    console.log("columna: "+this.col+", fila: "+this.row);
+    //console.log("columna: "+this.col+", fila: "+this.row);
 
-    if(this.click) {
-        this.targetX = this.col - 1;
-        this.targetY = this.row;
-    }
-    if(game.player.row < this.targetY) {
-        if(game.ticks % this.speed === 0) {
-            game.player.row++;
-        }
-    }
-    if(game.player.row > this.targetY) {
-        if(game.ticks % this.speed === 0) {
-            game.player.row--;
-        }
-    }
-    if(game.player.col < this.targetX) {
-        if(game.ticks % this.speed === 0) {
-            game.player.col++;
-        }
-    }
-    if(game.player.col > this.targetX) {
-        if(game.ticks % this.speed === 0) {
-            game.player.col--;
-        }
-    }
-    this.click = false;
+    
+
 }
 
 Cursor.prototype.render = function() {
