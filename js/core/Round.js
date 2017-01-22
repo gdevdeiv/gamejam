@@ -74,18 +74,6 @@ Round.prototype.tick = function() {
 					this.survived = true;
 				}
 			}
-			console.log("El _req vale: " + _req);
-			console.log("Has sobrevivido? " + this.survived);
-			console.log("Items guardados: " + game.warehouse.stored);
-		}
-		if (this.tip.event === null) {
-			var that = this;
-			setTimeout(function() {
-				that.start();
-			}, 2500);
-			game.map.sweeping = true;
-			this.started = false;
-		} else {
 			if (!this.survived) {
 				Hud.dead();
 			} else {
@@ -94,8 +82,13 @@ Round.prototype.tick = function() {
 					that.start();
 				}, 2500);
 			}
-			game.map.sweeping = true;
-			this.started = false;
+		} else {
+			var that = this;
+			setTimeout(function() {
+				that.start();
+			}, 2500);
 		}
+		game.map.sweeping = true;
+		this.started = false;
 	}
 }

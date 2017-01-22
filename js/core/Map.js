@@ -87,7 +87,8 @@ function Map() {
 	}.bind(this);
 
 	this.spawnItems = function (tileWidth) {
-		var xd = Math.random()*100;
+		var xd = Math.random()*75;
+		if (xd < 15) { xd = 15; }
 		for (var i = 0; i < xd; i++) {
 			this.items.push(new Item(Math.ceil(Math.random() * 11), tileWidth));
 		}
