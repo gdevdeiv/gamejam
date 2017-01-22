@@ -1,22 +1,31 @@
-function Map(level) {
-	this.level = level.img;
+function Map() {
+	var that = this;
+	this.level = new Sprite("level/level1.png", function(_width, _height) {
+		setTimeout(function() {
+			that.width = _width;
+			that.height = _height;
+			that.init();
+			game.player.init();
+		}, 100);
+	});
 	this.width = null;
 	this.height = null;
 	this.gapSize = 82;
 	this.gapProySize = this.gapSize * 0.8943885546;
 	this.gapX = null;
 	this.gapY = null;
-	this.items = [];
+	this.items = null;
 	this.sweeping = false;
 	this.sweepRow = 0;
 
 	this.init = function() {
-		this.spawnItems(this.gapSize);
-		this.width = this.level.width;
-		this.height = this.level.height;
+		this.sweeping = false;
+		this.sweepRow = 0;
 		this.gapX = Math.floor(this.width / 2 - 2) * this.gapSize;
 		this.gapY = Math.floor(this.height / 2 - 10) * this.gapSize/2;
-		game.context.drawImage(this.level, 0, 0);
+		this.items = [];
+		this.spawnItems(this.gapSize);
+		game.context.drawImage(this.level.img, 0, 0);
 		var tempData = game.context.getImageData(0, 0, this.width, this.height);
 		var data = tempData.data;
 		this.tiles = [];

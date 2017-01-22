@@ -14,8 +14,6 @@ function MenuStart() {
 
 	$(this.element + ' .button.play').click(function() {
 		$(that.element).fadeOut(1500, function() {
-			game.map.init();
-			game.inGame = true;
 			game.round.start();
 		});
 	});

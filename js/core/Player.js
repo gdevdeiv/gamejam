@@ -93,8 +93,8 @@ function Player() {
 
 	this.init = function () {
 		this.tileWidth = game.map.gapProySize;
-		this.col = Math.round(game.map.level.width / 2);
-		this.row = Math.round(game.map.level.width / 2);
+		this.col = Math.round(game.map.level.img.width / 2);
+		this.row = Math.round(game.map.level.img.width / 2);
 		this.posX = ((this.col+this.renderCorrectX) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 		this.posY = ((this.row+this.renderCorrectY) * this.tileWidth / 2) + (this.tileWidth / 2 - this.width / 2);
 		game.cursor.targetX = this.col;
@@ -108,14 +108,16 @@ function Player() {
 	}.bind(this);
 
 	this.update = function () {
-			if(this.dirX == "right" && this.dirY == null) {this.direction = "se"}
-			if(this.dirX == "right" && this.dirY == "down") {this.direction = "s"}
-			if(this.dirX == null && this.dirY == "down") {this.direction = "sw"}
-			if(this.dirX == "left" && this.dirY == "down") {this.direction = "w"}
-			if(this.dirX == "left" && this.dirY == null) {this.direction = "nw"}
-			if(this.dirX == "left" && this.dirY == "up") {this.direction = "n"}
-			if(this.dirX == null && this.dirY == "up") {this.direction = "ne"}
-			if(this.dirX == "right" && this.dirY == "up") {this.direction = "e"}
+
+		if (game.gameOver) { return; }
+		if(this.dirX == "right" && this.dirY == null) {this.direction = "se"}
+		if(this.dirX == "right" && this.dirY == "down") {this.direction = "s"}
+		if(this.dirX == null && this.dirY == "down") {this.direction = "sw"}
+		if(this.dirX == "left" && this.dirY == "down") {this.direction = "w"}
+		if(this.dirX == "left" && this.dirY == null) {this.direction = "nw"}
+		if(this.dirX == "left" && this.dirY == "up") {this.direction = "n"}
+		if(this.dirX == null && this.dirY == "up") {this.direction = "ne"}
+		if(this.dirX == "right" && this.dirY == "up") {this.direction = "e"}
 		if(this.moveX === false || this.moveY === false) {
 			if(game.ticks % 5 === 0) {
 				this.sprite ++;
