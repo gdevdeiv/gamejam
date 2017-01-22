@@ -10,6 +10,7 @@ function Player() {
 
 	this.tileWidth = null;
 
+	
 	this.col = 0;
 	this.row = 0;
 	this.renderCorrectX = 1;
@@ -102,6 +103,12 @@ function Player() {
 		game.cursor.targetX = this.col;
     	game.cursor.targetY = this.row;
 
+		var iso = Util.cartesianToIso(this.posX/2, this.posY/2);
+	
+		game.map.gapX = 2*iso.x; console.log(this.posX+","+game.map.gapX+","+iso.x)
+		game.map.gapY = -iso.y; console.log(this.posY+","+game.map.gapY+","+iso.y)
+
+
 	}.bind(this);
 
 	this.tick = function () {
@@ -193,9 +200,14 @@ function Player() {
 		}
 
 		game.context.fillStyle = "rgba(50,150,200,05)";
-		var iso = Util.cartesianToIso(this.posX, this.posY);
+		
 		if(this.direction === "") {this.direction = "s"}
+		var iso = Util.cartesianToIso(this.posX, this.posY);
 		game.context.drawImage(animationSprites[this.direction+this.sprite],iso.x + game.map.gapX, iso.y + game.map.gapY, this.width, this.height);
+		///////////////////////////////////////
+		game.map.gapX = -iso.x + game.canvas.width/2 ; console.log(this.posX+","+game.map.gapX+","+iso.x)
+		game.map.gapY = -iso.y + game.canvas.height/2; console.log(this.posY+","+game.map.gapY+","+iso.y)
+		///////////////////////////////////////
 	}.bind(this);
 }
 

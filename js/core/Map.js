@@ -21,8 +21,6 @@ function Map() {
 	this.init = function() {
 		this.sweeping = false;
 		this.sweepRow = 0;
-		this.gapX = Math.floor(this.width / 2 - 2) * this.gapSize;
-		this.gapY = Math.floor(this.height / 2 - 10) * this.gapSize/2;
 		this.items = [];
 		this.spawnItems(this.gapSize);
 		game.context.drawImage(this.level.img, 0, 0);

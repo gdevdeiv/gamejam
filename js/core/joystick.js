@@ -90,11 +90,8 @@ Joystick.prototype.input = function() {
             //funcionalidad
             //controles 1///////////////////////////////////////////////////////////////
             var degree = r2d(tempAngle);
-
-
             while(degree > 360){degree -= 360;}
             while(degree < 0) {degree += 360;}
-
             if(degree > 292.5+45 || degree < 67.5+45) {
                 console.log("derecha, ");
                 game.player.dirX = "right";
@@ -129,8 +126,29 @@ Joystick.prototype.input = function() {
             game.context.drawImage(this.mobileMov, this.touchStart2X-game.canvas.width/24 + tempModule * Math.cos(tempAngle), this.touchStart2Y-game.canvas.width/24 + tempModule * Math.sin(tempAngle), game.canvas.width/12, game.canvas.width/12);
             //funcionalidad
             //controles 1////////////////////////////////////////////
-
-            
+            var degree = r2d(tempAngle);
+            while(degree > 360){degree -= 360;}
+            while(degree < 0) {degree += 360;}
+            if(degree > 292.5+45 || degree < 67.5+45) {
+                console.log("derecha, ");
+                game.player.dirX = "right";
+                game.player.ivanX = true;
+            }
+            if(degree > 22.5+45 && degree < 157.5+45) {
+                console.log("abajo");
+                game.player.dirY = "down";
+                game.player.ivanY = true;
+            }
+            if(degree > 112.5+45 && degree < 247.5+45) {
+                console.log("izquierda");
+                game.player.dirX = "left";
+                game.player.ivanX = true;
+            }
+            if(degree > 202.5+45 && degree < 337.5+45) {
+                console.log("arriba");
+                game.player.dirY = "up";
+                game.player.ivanY = true;
+            }
         }
         if (this.touchStart2X > game.canvas.width / 2) {
             
