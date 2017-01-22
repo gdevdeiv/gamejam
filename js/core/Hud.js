@@ -5,7 +5,9 @@ Hud.announceRound = function(tip) {
 	$(".hud .tip").text(tip).fadeIn(500);
 	setTimeout(function () {
 		$(".hud .round").fadeOut(500);
-		$(".hud .tip").fadeOut(500);
+		$(".hud .tip").fadeOut(500, function() {
+			$(".hud .time").fadeIn(500);
+		});
 	}, 2000);
 };
 
@@ -52,5 +54,7 @@ Hud.drawWarehouse = function() {
 
 Hud.dead = function() {
 	game.gameOver = true;
-	$(game.menus.over.element).fadeIn(500);
+	$(".hud .time").fadeOut(500, function () {
+		$(game.menus.over.element).fadeIn(500);
+	});
 };
