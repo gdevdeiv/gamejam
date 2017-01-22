@@ -12,6 +12,8 @@ var Cursor = function() {
     $("#canvas").on('mousemove', function(event){
         that.isoX = event.pageX - game.map.gapX;
         that.isoY = event.pageY - game.map.gapY;
+    });
+    $("#canvas").on('click', function(event) {
         that.click = true;
     });
     $("#canvas").on('touchStart', function(event) {
