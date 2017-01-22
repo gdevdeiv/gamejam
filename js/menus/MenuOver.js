@@ -9,7 +9,7 @@ function MenuOver() {
 	$(this.element + ' .button.replay').click(function() {
 		$(that.element).fadeOut(1500, function() {
 			game.map.init();
-			game.inGame = true;
+			// game.inGame = true;
 			game.round.start();
 		});
 	});
