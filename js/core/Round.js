@@ -50,7 +50,7 @@ Round.prototype.start = function () {
 };
 
 Round.prototype.tick = function() {
-	if (this.remaining === null || this.remaining <= 0 || !this.started) { return; }
+	if (this.remaining === null || this.remaining <= 0 || !this.started || game.gameOver) { return; }
 
 	this.remaining = Math.ceil((this.roundTime - Date.now()) / 1000);
 	this.minute = Math.floor(this.remaining / 60);
@@ -62,33 +62,43 @@ Round.prototype.tick = function() {
 		this.survived = false;
 		if (this.tip.event !== null) {
 			var _req = 0;
-			for (var event in this.tip.event) {
-				for (var _mat in this.matrix[event]) {
-					if ($.inArray(_mat, game.warehouse.stored)) {
-						_req++;
+			if (game.warehouse.stored.length > 0) {
+				for (var event in this.tip.event) {
+					for (var _mat in this.matrix[event]) {
+						if ($.inArray(_mat, game.warehouse.stored)) {
+							_req++;
+							console.log(_mat + " esta en " + game.warehouse.stored)
+						}
 					}
 				}
-			}
-			for (var event in this.tip.event) {
-				if (_req >= this.tip.event[event]) {
-					this.survived = true;
+				for (var event in this.tip.event) {
+					console.log(_req + " es mayor o igual a " + this.tip.event[event]);
+					if (_req >= this.tip.event[event]) {
+						this.survived = true;
+					}
 				}
-			}
-			if (!this.survived) {
-				Hud.dead();
 			} else {
+				this.survived = false;
+			}
+			if (this.survived) {
 				var that = this;
 				setTimeout(function() {
 					that.start();
 				}, 2500);
+				game.map.sweeping = true;
+				this.started = false;
+			} else {
+				Hud.dead();
+				game.map.sweeping = true;
+				this.started = false;
 			}
 		} else {
 			var that = this;
 			setTimeout(function() {
 				that.start();
 			}, 2500);
+			game.map.sweeping = true;
+			this.started = false;
 		}
-		game.map.sweeping = true;
-		this.started = false;
 	}
 }
