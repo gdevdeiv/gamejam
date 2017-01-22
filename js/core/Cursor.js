@@ -8,13 +8,18 @@ var Cursor = function() {
     this.cartY = null;
     this.row = null;
     this.col = null;
+    this.click = false;
     $("#canvas").on('mousemove', function(event){
         that.isoX = event.pageX - game.map.gapX;
         that.isoY = event.pageY - game.map.gapY;
     });
+    $("#canvas").on('click', function(event) {
+        that.click = true;
+    });
     $("#canvas").on('touchStart', function(event) {
         that.isoX = event.touches[0].pageX - game.map.gapX;
         that.isoY = event.touches[0].pageY - game.map.gapY;
+        that.click = true;
     });
 };
 
@@ -35,8 +40,11 @@ Cursor.prototype.update = function() {
     this.cursorX =  cursorIso.x * game.map.gapProySize / 2 + game.map.gapX;
     this.cursorY = cursorIso.y * game.map.gapProySize / 2 + game.map.gapY;
     console.log("columna: "+this.col+", fila: "+this.row);
-    game.player.col = this.col - 1;
-    game.player.row = this.row;
+    if(this.click) {
+        game.player.col = this.col - 1;
+        game.player.row = this.row;
+    }
+    this.click = false;
 }
 
 Cursor.prototype.render = function() {
