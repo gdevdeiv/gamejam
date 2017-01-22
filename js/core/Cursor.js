@@ -1,7 +1,7 @@
 var Cursor = function() {
     var that = this;
     this.img = new Image();
-    this.img.src = "img/tiles/cursor.png";
+    this.img.src = "img/tiles/outline.png";
     this.isoX = null;
     this.isoY = null;
     this.cartX = null;
