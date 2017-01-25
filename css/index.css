@@ -25,6 +25,8 @@ html, body {
 	font-size: 96px;
 }
 
+.menu.credits .is-bold .title { font-size: 72px; }
+
 .menu.start .is-bold .title {
 	font-weight: 400;
 }

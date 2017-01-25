@@ -19,7 +19,9 @@ function MenuStart() {
 	});
 
 	$(this.element + ' .button.credits').click(function() {
-		// TODO: Credits screen?
+		$(that.element).fadeOut(500, function () {
+			$(game.menus.credits.element).fadeIn(500);
+		})
 	});
 }
 

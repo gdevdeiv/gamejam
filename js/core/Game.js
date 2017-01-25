@@ -13,6 +13,7 @@ function Game(config) {
 	this.inGame = false;
 	this.menus = {
 		start: new MenuStart(),
+		credits: new MenuCredits(),
 		over: new MenuOver()
 	};
 
